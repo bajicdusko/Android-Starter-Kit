@@ -12,3 +12,5 @@ I think that every modern native application should be organized on a similar wa
 - Fresco
 - PermissionDispatcher
 - JodaTime
+
+Currently, project is empty and library implementation will be added in next few days.

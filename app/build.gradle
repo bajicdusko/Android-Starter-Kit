@@ -15,7 +15,7 @@ android {
 
         multiDexEnabled true
 
-        buildConfigField("String", "BASE_URL", "\"http://xxx.xxx.xxx.xxx/\"")
+        buildConfigField("String", "BASE_URL", "\"http://jsonplaceholder.typicode.com/\"")
     }
 
     signingConfigs {
@@ -76,4 +76,5 @@ dependencies {
     compile 'com.github.hotchemi:permissionsdispatcher:2.0.7'
     compile 'com.path:android-priority-jobqueue:1.1.2'
     compile 'com.squareup:otto:1.3.8'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha6'
 }

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">AndroidBoilerplate</string>
     <string name="hello_world">Hello world</string>
+    <string name="field_is_empty">Field is empty</string>
 </resources>

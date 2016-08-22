@@ -1,4 +1,4 @@
-# Android Native Boilerplate
+# Android Starter Kit
 
 I've created this project as starting point for new native applications that i am working on. Setting up android application everytime, from the beginning is waste of time for me.
 I think that every modern native application should be organized on a similar way, so i am sharing it here. You might find it useful. This project includes and set-up most modern (and must have libraries, in my opinion):
@@ -12,5 +12,3 @@ I think that every modern native application should be organized on a similar wa
 - Fresco
 - PermissionDispatcher
 - JodaTime
-
-Currently, project is empty and library implementation will be added in next few days.

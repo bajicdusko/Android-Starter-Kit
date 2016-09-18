@@ -21,7 +21,7 @@ public class BaseService<T> {
     }
 
     protected CallbackInterceptor convertCallback(APICallback<T> apiCallback) {
-        return new CallbackInterceptor(apiCallback, apiFactory);
+        return new CallbackInterceptor(apiCallback, apiFactory, context);
     }
 
     protected boolean allMandatoryFieldsAreSet(Object... args) {

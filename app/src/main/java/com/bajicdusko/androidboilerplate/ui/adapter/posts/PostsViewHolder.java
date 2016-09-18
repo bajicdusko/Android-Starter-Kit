@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.bajicdusko.androidboilerplate.R;
-import com.bajicdusko.androidboilerplate.core.rest.model.users.PostModel;
+import com.bajicdusko.androidboilerplate.core.rest.model.posts.PostModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,7 +35,7 @@ public class PostsViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind() {
-        tvTitle.setText(postModel.getTitle());
+        tvTitle.setText(postModel.getName());
         tvContent.setText(postModel.getContent());
     }
 }

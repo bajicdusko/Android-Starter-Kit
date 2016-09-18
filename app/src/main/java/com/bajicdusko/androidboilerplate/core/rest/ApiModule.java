@@ -1,5 +1,7 @@
 package com.bajicdusko.androidboilerplate.core.rest;
 
+import com.bajicdusko.androidboilerplate.core.rest.api.CategoriesApi;
+import com.bajicdusko.androidboilerplate.core.rest.api.CommentsApi;
 import com.bajicdusko.androidboilerplate.core.rest.api.PostsApi;
 
 import javax.inject.Singleton;
@@ -18,5 +20,17 @@ public class ApiModule {
     @Provides
     public PostsApi providePostsApi(ApiFactory apiFactory) {
         return apiFactory.createPostsApi();
+    }
+
+    @Singleton
+    @Provides
+    public CommentsApi provideCommentsApi(ApiFactory apiFactory) {
+        return apiFactory.createCommentsApi();
+    }
+
+    @Singleton
+    @Provides
+    public CategoriesApi provideCategoriesApi(ApiFactory apiFactory) {
+        return apiFactory.createCategoriesApi();
     }
 }

@@ -9,7 +9,12 @@ import com.bajicdusko.androidboilerplate.BoilerplateDaggerComponent;
 import com.bajicdusko.androidboilerplate.core.cache.CacheManager;
 import com.bajicdusko.androidboilerplate.core.rest.ApiFactory;
 import com.bajicdusko.androidboilerplate.core.rest.ApiModule;
+import com.bajicdusko.androidboilerplate.core.rest.job.category.GetCategoriesJob;
+import com.bajicdusko.androidboilerplate.core.rest.job.comment.GetCommentsJob;
+import com.bajicdusko.androidboilerplate.core.rest.job.posts.GetLatestPostJob;
 import com.bajicdusko.androidboilerplate.core.rest.job.posts.GetPostsJob;
+import com.bajicdusko.androidboilerplate.core.rest.job.posts.PostCommentJob;
+import com.bajicdusko.androidboilerplate.core.rest.job.posts.SearchPostsJob;
 import com.google.gson.Gson;
 import com.path.android.jobqueue.BaseJob;
 import com.path.android.jobqueue.JobManager;
@@ -95,6 +100,16 @@ public class CoreModule {
                         BoilerplateDaggerComponent component = ((BoilerplateApplication) context.getApplicationContext()).injector();
                         if (job instanceof GetPostsJob) {
                             component.inject((GetPostsJob) job);
+                        } else if (job instanceof GetCategoriesJob) {
+                            component.inject((GetCategoriesJob) job);
+                        } else if (job instanceof GetCommentsJob) {
+                            component.inject((GetCommentsJob) job);
+                        } else if (job instanceof GetLatestPostJob) {
+                            component.inject((GetLatestPostJob) job);
+                        } else if (job instanceof PostCommentJob) {
+                            component.inject((PostCommentJob) job);
+                        } else if (job instanceof SearchPostsJob) {
+                            component.inject((SearchPostsJob) job);
                         }
                     }
                 })

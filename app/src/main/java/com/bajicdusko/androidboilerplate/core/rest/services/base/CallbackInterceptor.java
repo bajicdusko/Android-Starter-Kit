@@ -1,10 +1,15 @@
 package com.bajicdusko.androidboilerplate.core.rest.services.base;
 
+import android.content.Context;
+
 import com.bajicdusko.androidboilerplate.core.rest.ApiFactory;
 import com.bajicdusko.androidboilerplate.core.rest.exception.ApiException;
+import com.bajicdusko.androidboilerplate.core.rest.exception.NoConnectionException;
 import com.bajicdusko.androidboilerplate.core.rest.model.BaseModel;
 
 import java.io.IOException;
+import java.net.ConnectException;
+import java.net.UnknownHostException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,10 +19,12 @@ public class CallbackInterceptor<T> implements Callback<T> {
 
     APICallback<T> apiCallback;
     ApiFactory apiFactory;
+    Context context;
 
-    public CallbackInterceptor(APICallback<T> apiCallback, ApiFactory apiFactory) {
+    public CallbackInterceptor(APICallback<T> apiCallback, ApiFactory apiFactory, Context context) {
         this.apiCallback = apiCallback;
         this.apiFactory = apiFactory;
+        this.context = context;
     }
 
     @Override
@@ -26,7 +33,11 @@ public class CallbackInterceptor<T> implements Callback<T> {
             if (!response.isSuccessful()) {
                 try {
                     BaseModel errorModel = apiFactory.getErrorConverter().convert(response.errorBody());
-                    apiCallback.onFailure(new ApiException(errorModel.getDescription(), errorModel.getCode()));
+                    if (errorModel.getDescription().contains("UnknownHostException")) {
+                        apiCallback.onFailure(new NoConnectionException(context));
+                    } else {
+                        apiCallback.onFailure(new ApiException(errorModel.getDescription(), errorModel.getCode()));
+                    }
                 } catch (IOException ex) {
                     apiCallback.onFailure(new ApiException(response.raw().message()));
                 }
@@ -40,7 +51,11 @@ public class CallbackInterceptor<T> implements Callback<T> {
     @Override
     public void onFailure(Call<T> call, Throwable t) {
         if (apiCallback != null) {
-            apiCallback.onFailure(new ApiException(t));
+            if (t instanceof UnknownHostException || t instanceof ConnectException) {
+                apiCallback.onFailure(new NoConnectionException(context));
+            } else {
+                apiCallback.onFailure(new ApiException(t));
+            }
         }
     }
 }

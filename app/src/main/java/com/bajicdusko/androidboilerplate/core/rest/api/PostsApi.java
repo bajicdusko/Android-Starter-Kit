@@ -1,12 +1,13 @@
 package com.bajicdusko.androidboilerplate.core.rest.api;
 
-import com.bajicdusko.androidboilerplate.core.rest.model.users.PostModel;
+import com.bajicdusko.androidboilerplate.core.rest.model.posts.PostModel;
 
 import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Created by Bajic Dusko (www.bajicdusko.com) on 15-Aug-16.
@@ -17,10 +18,21 @@ public interface PostsApi {
     String POSTS = "posts";
     String ID_PATH = "{id}";
     String ID = "id";
+    String CATEGORIES = "categories";
+    String PAGE = "page";
+    String PER_PAGE = "per_page";
+    String SEARCH = "filter[s]";
+    String EMBED = "?_embed=true";
 
-    @GET(POSTS)
-    Call<ArrayList<PostModel>> getPosts();
+    @GET(POSTS + EMBED)
+    Call<ArrayList<PostModel>> getAllPosts(@Query(PAGE) int page, @Query(PER_PAGE) int perPage);
+
+    @GET(POSTS + EMBED)
+    Call<ArrayList<PostModel>> getPosts(@Query(CATEGORIES) long categoryId, @Query(PAGE) int page, @Query(PER_PAGE) int perPage);
 
     @GET(POSTS + "/" + ID_PATH)
     Call<PostModel> getPost(@Path(ID) int id);
+
+    @GET(POSTS + EMBED)
+    Call<ArrayList<PostModel>> searchPosts(@Query(SEARCH) String search, @Query(PER_PAGE) int perPage);
 }

@@ -3,8 +3,10 @@ package com.bajicdusko.androidboilerplate.ui.activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.bajicdusko.androidboilerplate.Cacher;
 import com.bajicdusko.androidboilerplate.R;
 import com.bajicdusko.androidboilerplate.core.cache.CacheManager;
+import com.bajicdusko.androidboilerplate.core.rest.model.posts.PostModel;
 import com.bajicdusko.androidboilerplate.ui.BaseActivity;
 import com.bajicdusko.androidboilerplate.ui.FragmentUtility;
 import com.bajicdusko.androidboilerplate.ui.fragment.HomeFragment;
@@ -19,6 +21,8 @@ public class MainActivity extends BaseActivity {
     TextView tvHello;
     @Inject
     CacheManager cacheManager;
+    @Inject
+    Cacher cacher;
 
     FragmentUtility fragmentUtility;
 
@@ -33,5 +37,12 @@ public class MainActivity extends BaseActivity {
         injector().inject(this);
         fragmentUtility = new FragmentUtility(this, R.id.activity_main_fl_fragment_container, cacheManager);
         fragmentUtility.addFragment(HomeFragment.newInstance());
+
+        PostModel postModel = new PostModel();
+        postModel.setName("test");
+
+        cacher.put("test", postModel);
+        PostModel cachedPostModel = cacher.get("test");
+        String title = cachedPostModel.getName();
     }
 }

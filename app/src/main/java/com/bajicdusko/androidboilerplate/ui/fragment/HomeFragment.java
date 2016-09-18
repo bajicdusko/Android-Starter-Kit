@@ -7,9 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.bajicdusko.androidboilerplate.R;
-import com.bajicdusko.androidboilerplate.core.rest.job.event.posts.OnGetPostsEvent;
+import com.bajicdusko.androidboilerplate.core.rest.ApiConstants;
 import com.bajicdusko.androidboilerplate.core.rest.job.posts.GetPostsJob;
-import com.bajicdusko.androidboilerplate.core.rest.model.users.PostModel;
+import com.bajicdusko.androidboilerplate.core.rest.job.posts.event.OnGetPostsEvent;
+import com.bajicdusko.androidboilerplate.core.rest.model.posts.PostModel;
 import com.bajicdusko.androidboilerplate.ui.BaseActivity;
 import com.bajicdusko.androidboilerplate.ui.BaseFragment;
 import com.bajicdusko.androidboilerplate.ui.adapter.posts.PostsAdapter;
@@ -64,7 +65,7 @@ public class HomeFragment extends BaseFragment implements IFragment {
 
     private void loadData() {
         postsAdapter.onRefresh();
-        jobManager.addJob(new GetPostsJob(1));
+        jobManager.addJob(new GetPostsJob(1, ApiConstants.DEFAULT_PAGE, ApiConstants.DEFAULT_PER_PAGE));
     }
 
     @Subscribe

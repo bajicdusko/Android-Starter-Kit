@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.bajicdusko.androidboilerplate.core.rest.model.users.PostModel;
+import com.bajicdusko.androidboilerplate.core.rest.model.posts.PostModel;
 import com.bajicdusko.androidboilerplate.ui.BaseActivity;
 
 import java.util.ArrayList;

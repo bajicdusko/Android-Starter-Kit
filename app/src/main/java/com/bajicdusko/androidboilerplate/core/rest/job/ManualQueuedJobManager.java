@@ -18,9 +18,12 @@ public class ManualQueuedJobManager<T extends BaseJob> {
         queuedJobs.add(job);
     }
 
-    public void execute() {
+    public boolean execute() {
         if (!queuedJobs.isEmpty()) {
             jobManager.addJob(queuedJobs.poll());
+            return true;
         }
+
+        return false;
     }
 }

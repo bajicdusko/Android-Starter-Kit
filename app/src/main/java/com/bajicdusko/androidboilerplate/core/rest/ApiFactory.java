@@ -1,5 +1,7 @@
 package com.bajicdusko.androidboilerplate.core.rest;
 
+import com.bajicdusko.androidboilerplate.core.rest.api.CategoriesApi;
+import com.bajicdusko.androidboilerplate.core.rest.api.CommentsApi;
 import com.bajicdusko.androidboilerplate.core.rest.api.PostsApi;
 import com.bajicdusko.androidboilerplate.core.rest.model.BaseModel;
 import com.google.gson.Gson;
@@ -22,11 +24,9 @@ public class ApiFactory {
     private static Retrofit retrofit;
     Converter<ResponseBody, BaseModel> errorConverter;
 
-
     public ApiFactory(Gson gson) {
         this.gson = gson;
     }
-
 
     private Retrofit retrofitInstance(boolean force) {
         if (retrofit == null || force) {
@@ -54,5 +54,13 @@ public class ApiFactory {
 
     public PostsApi createPostsApi() {
         return retrofitInstance(false).create(PostsApi.class);
+    }
+
+    public CommentsApi createCommentsApi() {
+        return retrofitInstance(false).create(CommentsApi.class);
+    }
+
+    public CategoriesApi createCategoriesApi() {
+        return retrofitInstance(false).create(CategoriesApi.class);
     }
 }

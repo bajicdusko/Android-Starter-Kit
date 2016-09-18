@@ -8,4 +8,6 @@ import com.bajicdusko.androidboilerplate.BuildConfig;
 
 public class ApiConstants {
     public static final String API_URL = BuildConfig.BASE_URL;
+    public static final int DEFAULT_PAGE = 1;
+    public static final int DEFAULT_PER_PAGE = 10;
 }

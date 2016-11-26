@@ -27,18 +27,14 @@ public class PostModel extends BaseModel implements Parcelable {
     private String postUrl;
     @SerializedName("title")
     private RenderedModel title;
-    @SerializedName("sadrzaj")
-    private String content;
+    @SerializedName("content")
+    private RenderedModel content;
     @SerializedName("excerpt")
     private RenderedModel intro;
     @SerializedName("_embedded")
     private EmbeddedModel embeddedModel;
     @SerializedName("name")
     private String name;
-    @SerializedName("slika")
-    private String imageUrl;
-    private long manualCategoryId;
-    private String manualCategoryName;
 
     public long getId() {
         return id;
@@ -112,36 +108,16 @@ public class PostModel extends BaseModel implements Parcelable {
         this.name = name;
     }
 
-    public long getManualCategoryId() {
-        return manualCategoryId;
-    }
-
-    public void setManualCategoryId(long manualCategoryId) {
-        this.manualCategoryId = manualCategoryId;
-    }
-
-    public String getManualCategoryName() {
-        return manualCategoryName;
-    }
-
-    public void setManualCategoryName(String manualCategoryName) {
-        this.manualCategoryName = manualCategoryName;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public void setContent(String content) {
+    public void setContent(RenderedModel content) {
         this.content = content;
     }
 
-    public String getContent() {
+    public RenderedModel getContent() {
         return content;
+    }
+
+    public boolean equals(PostModel postModel) {
+        return postModel != null && postModel.getId() == this.getId();
     }
 
     @Override
@@ -158,13 +134,10 @@ public class PostModel extends BaseModel implements Parcelable {
         dest.writeString(this.slug);
         dest.writeString(this.postUrl);
         dest.writeParcelable(this.title, flags);
-        dest.writeString(this.content);
+        dest.writeParcelable(this.content, flags);
         dest.writeParcelable(this.intro, flags);
         dest.writeParcelable(this.embeddedModel, flags);
         dest.writeString(this.name);
-        dest.writeString(this.imageUrl);
-        dest.writeLong(this.manualCategoryId);
-        dest.writeString(this.manualCategoryName);
     }
 
     public PostModel() {
@@ -180,13 +153,10 @@ public class PostModel extends BaseModel implements Parcelable {
         this.slug = in.readString();
         this.postUrl = in.readString();
         this.title = in.readParcelable(RenderedModel.class.getClassLoader());
-        this.content = in.readString();
+        this.content = in.readParcelable(RenderedModel.class.getClassLoader());
         this.intro = in.readParcelable(RenderedModel.class.getClassLoader());
         this.embeddedModel = in.readParcelable(EmbeddedModel.class.getClassLoader());
         this.name = in.readString();
-        this.imageUrl = in.readString();
-        this.manualCategoryId = in.readLong();
-        this.manualCategoryName = in.readString();
     }
 
     public static final Creator<PostModel> CREATOR = new Creator<PostModel>() {

@@ -30,8 +30,8 @@ public class PostsService extends BaseService {
         postsCall.enqueue(convertCallback(postsCallback));
     }
 
-    public void getPosts(long categoryId, int page, int perPage, APICallback<ArrayList<PostModel>> postsCallback) {
-        Call<ArrayList<PostModel>> postsCall = postsApi.getPosts(categoryId, page, perPage);
+    public void getPosts(int page, int perPage, APICallback<ArrayList<PostModel>> postsCallback) {
+        Call<ArrayList<PostModel>> postsCall = postsApi.getPosts(page, perPage);
         postsCall.enqueue(convertCallback(postsCallback));
     }
 

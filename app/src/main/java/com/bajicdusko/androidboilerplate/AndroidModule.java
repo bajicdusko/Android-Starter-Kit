@@ -53,10 +53,4 @@ public class AndroidModule {
     public NotificationManagerCompat provideNotificationManagerCompat(Context context) {
         return NotificationManagerCompat.from(context);
     }
-
-    @Provides
-    @Singleton
-    public Cacher provideCacher(SharedPreferences sharedPreferences, Gson gson) {
-        return new Cacher(gson, sharedPreferences);
-    }
 }

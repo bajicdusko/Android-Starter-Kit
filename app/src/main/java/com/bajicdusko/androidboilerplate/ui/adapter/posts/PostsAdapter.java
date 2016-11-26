@@ -18,8 +18,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsViewHolder> {
     private ArrayList<PostModel> posts = new ArrayList<>();
     private BaseActivity baseActivity;
 
-    public PostsAdapter(ArrayList<PostModel> posts, BaseActivity baseActivity) {
-        this.posts = posts;
+    public PostsAdapter(BaseActivity baseActivity) {
         this.baseActivity = baseActivity;
     }
 
@@ -29,7 +28,11 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsViewHolder> {
     }
 
     public void onDataChanged(ArrayList<PostModel> postModels) {
-        this.posts.addAll(postModels);
+        for (PostModel postModel : postModels) {
+            if (!this.posts.contains(postModel)) {
+                this.posts.add(postModel);
+            }
+        }
         notifyDataSetChanged();
     }
 

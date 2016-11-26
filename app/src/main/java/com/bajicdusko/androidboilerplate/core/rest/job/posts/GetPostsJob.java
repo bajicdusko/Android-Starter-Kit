@@ -26,12 +26,10 @@ public class GetPostsJob extends BaseJob {
 
     private final int page;
     private final int perPage;
-    private final long categoryId;
 
-    public GetPostsJob(long categoryId, int page, int perPage) {
+    public GetPostsJob(int page, int perPage) {
         super();
         this.page = page;
-        this.categoryId = categoryId;
         this.perPage = perPage;
     }
 
@@ -43,10 +41,10 @@ public class GetPostsJob extends BaseJob {
     @Override
     public void onRun() throws Throwable {
         int tempPage = page < ApiConstants.DEFAULT_PAGE ? ApiConstants.DEFAULT_PAGE : page;
-        postsService.getPosts(categoryId, tempPage, perPage, new APICallback<ArrayList<PostModel>>() {
+        postsService.getPosts(tempPage, perPage, new APICallback<ArrayList<PostModel>>() {
             @Override
             public void onSuccess(ArrayList<PostModel> response) {
-                bus.post(OnGetPostsEvent.finished(response, page, categoryId));
+                bus.post(OnGetPostsEvent.finished(response, page));
             }
 
             @Override

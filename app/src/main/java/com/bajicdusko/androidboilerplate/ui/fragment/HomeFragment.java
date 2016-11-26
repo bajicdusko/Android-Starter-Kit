@@ -10,15 +10,12 @@ import com.bajicdusko.androidboilerplate.R;
 import com.bajicdusko.androidboilerplate.core.rest.ApiConstants;
 import com.bajicdusko.androidboilerplate.core.rest.job.posts.GetPostsJob;
 import com.bajicdusko.androidboilerplate.core.rest.job.posts.event.OnGetPostsEvent;
-import com.bajicdusko.androidboilerplate.core.rest.model.posts.PostModel;
 import com.bajicdusko.androidboilerplate.ui.BaseActivity;
 import com.bajicdusko.androidboilerplate.ui.BaseFragment;
 import com.bajicdusko.androidboilerplate.ui.adapter.posts.PostsAdapter;
 import com.bajicdusko.androidboilerplate.ui.util.Utility;
 import com.path.android.jobqueue.JobManager;
 import com.squareup.otto.Subscribe;
-
-import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -38,7 +35,6 @@ public class HomeFragment extends BaseFragment implements IFragment {
     RecyclerView rlPosts;
 
     PostsAdapter postsAdapter;
-    ArrayList<PostModel> postModels = new ArrayList<PostModel>();
 
     @Override
     protected int getContentLayout() {
@@ -59,18 +55,21 @@ public class HomeFragment extends BaseFragment implements IFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rlPosts.setLayoutManager(new LinearLayoutManager(getContext()));
-        rlPosts.setAdapter(postsAdapter = new PostsAdapter(postModels, (BaseActivity) getActivity()));
+        rlPosts.setAdapter(postsAdapter = new PostsAdapter((BaseActivity) getActivity()));
         loadData();
     }
 
     private void loadData() {
         postsAdapter.onRefresh();
-        jobManager.addJob(new GetPostsJob(1, ApiConstants.DEFAULT_PAGE, ApiConstants.DEFAULT_PER_PAGE));
+        jobManager.addJob(new GetPostsJob(ApiConstants.DEFAULT_PAGE, ApiConstants.DEFAULT_PER_PAGE));
     }
 
     @Subscribe
     public void onGetPostsEvent(OnGetPostsEvent event) {
         if (shouldReadEventData(event)) {
+            if (event.page == ApiConstants.DEFAULT_PAGE) {
+                postsAdapter.onRefresh();
+            }
             postsAdapter.onDataChanged(event.posts);
         } else if (event.hasError()) {
             Utility.showToast(getContext(), event.getErrorMessage());

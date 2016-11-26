@@ -18,7 +18,6 @@ public interface PostsApi {
     String POSTS = "posts";
     String ID_PATH = "{id}";
     String ID = "id";
-    String CATEGORIES = "categories";
     String PAGE = "page";
     String PER_PAGE = "per_page";
     String SEARCH = "filter[s]";
@@ -28,7 +27,7 @@ public interface PostsApi {
     Call<ArrayList<PostModel>> getAllPosts(@Query(PAGE) int page, @Query(PER_PAGE) int perPage);
 
     @GET(POSTS + EMBED)
-    Call<ArrayList<PostModel>> getPosts(@Query(CATEGORIES) long categoryId, @Query(PAGE) int page, @Query(PER_PAGE) int perPage);
+    Call<ArrayList<PostModel>> getPosts(@Query(PAGE) int page, @Query(PER_PAGE) int perPage);
 
     @GET(POSTS + "/" + ID_PATH)
     Call<PostModel> getPost(@Path(ID) int id);

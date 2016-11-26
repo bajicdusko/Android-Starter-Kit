@@ -14,27 +14,24 @@ public class OnGetPostsEvent extends BasePagedEvent {
 
     public final ArrayList<PostModel> posts;
 
-    public final long categoryId;
-
-    public OnGetPostsEvent(ApiException apiException, boolean isInProgress, boolean isCanceled, int page, ArrayList<PostModel> posts, long categoryId) {
+    public OnGetPostsEvent(ApiException apiException, boolean isInProgress, boolean isCanceled, int page, ArrayList<PostModel> posts) {
         super(apiException, isInProgress, isCanceled, page);
         this.posts = posts;
-        this.categoryId = categoryId;
     }
 
     public static OnGetPostsEvent eventInProgress() {
-        return new OnGetPostsEvent(null, true, false, NO_PAGE, null, -1);
+        return new OnGetPostsEvent(null, true, false, NO_PAGE, null);
     }
 
-    public static OnGetPostsEvent finished(ArrayList<PostModel> posts, int page, long categoryId) {
-        return new OnGetPostsEvent(null, false, false, page, posts, categoryId);
+    public static OnGetPostsEvent finished(ArrayList<PostModel> posts, int page) {
+        return new OnGetPostsEvent(null, false, false, page, posts);
     }
 
     public static OnGetPostsEvent error(ApiException ex) {
-        return new OnGetPostsEvent(ex, false, false, NO_PAGE, null, -1);
+        return new OnGetPostsEvent(ex, false, false, NO_PAGE, null);
     }
 
     public static OnGetPostsEvent cancel() {
-        return new OnGetPostsEvent(null, false, true, NO_PAGE, null, -1);
+        return new OnGetPostsEvent(null, false, true, NO_PAGE, null);
     }
 }

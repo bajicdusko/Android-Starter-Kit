@@ -1,6 +1,7 @@
 package com.bajicdusko.androidboilerplate.ui.adapter.posts;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
@@ -32,10 +33,11 @@ public class PostsViewHolder extends RecyclerView.ViewHolder {
 
     public void setPostModel(PostModel postModel) {
         this.postModel = postModel;
+        bind();
     }
 
     public void bind() {
-        tvTitle.setText(postModel.getName());
-        tvContent.setText(postModel.getContent());
+        tvTitle.setText(Html.fromHtml(postModel.getTitle().getRendered()));
+        tvContent.setText(Html.fromHtml(postModel.getIntro().getRendered()));
     }
 }

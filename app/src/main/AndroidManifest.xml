@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bajicdusko.androidboilerplate">
+          package="com.bajicdusko.androidstarterkit">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".BoilerplateApplication"
+        android:name="com.bajicdusko.androidstarterkit.AndroidStarterKitApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name="com.bajicdusko.androidstarterkit.ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -15,9 +15,13 @@ import com.bajicdusko.androidstarterkit.R;
 import com.bajicdusko.androidstarterkit.core.rest.job.BaseEvent;
 import com.squareup.otto.Bus;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by Bajic Dusko (www.bajicdusko.com) on 13-Jul-16.
@@ -29,6 +33,8 @@ public abstract class BaseFragment extends Fragment implements Injector {
     @Inject
     Bus bus;
 
+    protected ArrayList<Disposable> disposables = new ArrayList<>();
+
     protected int getContentLayout() {
         return NO_LAYOUT;
     }
@@ -36,6 +42,22 @@ public abstract class BaseFragment extends Fragment implements Injector {
     @Override
     public AndroidStarterKitDaggerComponent injector() {
         return ((Injector) getActivity()).injector();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    public void addDisposables(Disposable... disposables) {
+        this.disposables.add(Observable.fromArray(disposables)
+                .doOnSubscribe(consumer -> {
+                    if (this.disposables != null) {
+                        this.disposables = new ArrayList<>();
+                    }
+                })
+                .subscribe(disposable -> this.disposables.add(disposable)));
     }
 
     @Nullable
@@ -60,6 +82,21 @@ public abstract class BaseFragment extends Fragment implements Injector {
     public void onPause() {
         super.onPause();
         bus.unregister(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (disposables != null) {
+            for (Disposable disposable : disposables) {
+                if (!disposable.isDisposed()) {
+                    disposable.dispose();
+                }
+            }
+
+            disposables.clear();
+            disposables = null;
+        }
     }
 
     public boolean areFieldsEmpty(EditText... args) {

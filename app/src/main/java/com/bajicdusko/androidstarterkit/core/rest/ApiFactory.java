@@ -5,6 +5,7 @@ import com.bajicdusko.androidstarterkit.core.rest.api.CommentsApi;
 import com.bajicdusko.androidstarterkit.core.rest.api.PostsApi;
 import com.bajicdusko.androidstarterkit.core.rest.model.BaseModel;
 import com.google.gson.Gson;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.lang.annotation.Annotation;
 
@@ -32,6 +33,7 @@ public class ApiFactory {
         if (retrofit == null || force) {
             retrofit = new Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create(gson))
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .client(getClient())
                     .baseUrl(ApiConstants.API_URL)
                     .build();

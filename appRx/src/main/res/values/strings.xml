@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Android-Starter-Kit</string>
+    <string name="hello_world">Hello world</string>
+    <string name="field_is_empty">Field is empty</string>
+    <string name="no_connection">There is no internet connection.</string>
+</resources>

@@ -7,17 +7,10 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0-beta2'
-            classpath 'com.google.gms:google-services:3.0.0'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath 'com.google.gms:google-services:3.0.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'me.tatarka:gradle-retrolambda:3.2.5'
-        // can be removed with android-gradle plugin is upgraded to 2.2
-        // https://twitter.com/JakeWharton/status/760836175586267136
-        classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath 'me.tatarka:gradle-retrolambda:3.6.0'
     }
 }
 

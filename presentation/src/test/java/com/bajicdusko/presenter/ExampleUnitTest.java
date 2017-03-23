@@ -1,4 +1,4 @@
-package com.bajicdusko.androidstarterkit;
+package com.bajicdusko.presenter;
 
 import org.junit.Test;
 

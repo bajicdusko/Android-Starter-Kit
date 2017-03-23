@@ -1,4 +1,4 @@
-package com.bajicdusko.androidstarterkit;
+package com.bajicdusko.data;
 
 import org.junit.Test;
 

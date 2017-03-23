@@ -2,22 +2,34 @@ package com.bajicdusko.androidstarterkit;
 
 import android.app.Application;
 
+import com.bajicdusko.androidstarterkit.di.activity.ActivityComponent;
+import com.bajicdusko.androidstarterkit.di.activity.ActivityModule;
+import com.bajicdusko.androidstarterkit.di.app.AndroidModule;
+import com.bajicdusko.androidstarterkit.di.app.AndroidStarterKitComponent;
+import com.bajicdusko.androidstarterkit.di.app.AndroidStarterKitModule;
+import com.bajicdusko.androidstarterkit.di.app.DaggerAndroidStarterKitComponent;
+import com.bajicdusko.androidstarterkit.ui.BaseActivity;
+
 /**
- * Created by Bajic Dusko (www.bajicdusko.com) on 15-Aug-16.
+ * Created by Bajic Dusko (www.bajicdusko.com) on 23/03/17.
  */
 
 public class AndroidStarterKitApplication extends Application {
 
-    AndroidStarterKitDaggerComponent component;
+
+    private AndroidStarterKitComponent component;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        component = DaggerAndroidStarterKitDaggerComponent.builder().androidStarterKitModule(new AndroidStarterKitModule(this)).build();
+        component = DaggerAndroidStarterKitComponent.builder()
+                .androidStarterKitModule(new AndroidStarterKitModule(this))
+                .androidModule(new AndroidModule(this))
+                .build();
     }
 
-    public AndroidStarterKitDaggerComponent injector() {
-        return component;
+    public ActivityComponent getActivityComponent(BaseActivity baseActivity) {
+        return component.activityComponentBuilder().activityModule(new ActivityModule(baseActivity)).build();
     }
 }

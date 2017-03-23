@@ -1,15 +1,14 @@
 package com.bajicdusko.data.exception;
 
+import android.text.TextUtils;
+
 import com.bajicdusko.data.api.ApiConstants;
 import com.bajicdusko.data.api.model.ErrorModel;
 
 import java.io.IOException;
-import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.ResponseBody;
-import retrofit2.Converter;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
@@ -42,13 +41,20 @@ public class RetrofitException extends Exception {
 
     private void extractHttpError() {
         ErrorModel errorModel = null;
-        if (type == RetrofitErrorTypeEnum.HTTP && retrofit != null && response != null) {
-            try {
-                Converter<ResponseBody, ErrorModel> converter = retrofit.responseBodyConverter(ErrorModel.class, new Annotation[0]);
-                errorModel = converter.convert(response.errorBody());
-            } catch (IOException e) {
-            }
-        }
+
+        /**
+         * This is a chance to create ErrorModel for specific API and convert error body to it.
+         * When {@link com.bajicdusko.data.util.Util.getErrorMessage()} is called it will use message
+         * from ErrorModel for displaying purposes
+         */
+
+//        if (type == RetrofitErrorTypeEnum.HTTP && retrofit != null && response != null) {
+//            try {
+//                Converter<ResponseBody, ErrorModel> converter = retrofit.responseBodyConverter(ErrorModel.class, new Annotation[0]);
+//                errorModel = converter.convert(response.errorBody());
+//            } catch (IOException e) {
+//            }
+//        }
 
         if (errorModel != null) {
             this.message = errorModel.getFirstError();
@@ -72,7 +78,8 @@ public class RetrofitException extends Exception {
     }
 
     public static RetrofitException unknownException(Throwable throwable) {
-        return new RetrofitException(null, ApiConstants.UNKNOWN_EXCEPTION_CODE, throwable.getMessage(), null, RetrofitErrorTypeEnum.UNKNOWN);
+        String message = TextUtils.isEmpty(throwable.getMessage()) ? throwable.getClass().getName() : throwable.getMessage();
+        return new RetrofitException(null, ApiConstants.UNKNOWN_EXCEPTION_CODE, message, null, RetrofitErrorTypeEnum.UNKNOWN);
     }
 
     public enum RetrofitErrorTypeEnum {

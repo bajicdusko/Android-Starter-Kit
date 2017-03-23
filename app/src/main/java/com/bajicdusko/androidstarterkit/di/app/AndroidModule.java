@@ -16,6 +16,7 @@ import dagger.Provides;
  * Created by Bajic Dusko (www.bajicdusko.com) on 23/03/17.
  */
 
+@Singleton
 @Module
 public class AndroidModule {
     private final Context context;

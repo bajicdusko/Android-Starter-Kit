@@ -2,6 +2,7 @@ package com.bajicdusko.data.di;
 
 import com.bajicdusko.data.api.AnnotationExclusionStrategy;
 import com.bajicdusko.data.api.ApiFactory;
+import com.bajicdusko.data.api.questions.QuestionsApi;
 import com.bajicdusko.data.repository.CacheRepository;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -31,5 +32,10 @@ public class ApiModule {
     @Provides
     public ApiFactory provideApiFactory(Gson gson, CacheRepository cacheRepository) {
         return new ApiFactory(gson, cacheRepository);
+    }
+
+    @Provides
+    public QuestionsApi provideQuestionApi(ApiFactory apiFactory) {
+        return apiFactory.createQuestionApi();
     }
 }

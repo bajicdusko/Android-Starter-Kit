@@ -5,6 +5,7 @@ import android.util.Base64;
 
 import com.bajicdusko.data.BuildConfig;
 import com.bajicdusko.data.RxJava2ErrorHandlerCallAdapterFactory;
+import com.bajicdusko.data.api.questions.QuestionsApi;
 import com.bajicdusko.data.repository.CacheRepository;
 import com.google.gson.Gson;
 
@@ -55,5 +56,9 @@ public class ApiFactory {
 
                     return chain.proceed(request);
                 }).build();
+    }
+
+    public QuestionsApi createQuestionApi() {
+        return retrofit.create(QuestionsApi.class);
     }
 }

@@ -68,4 +68,5 @@ dependencies {
     compile 'joda-time:joda-time:2.9.7'
     compile 'io.reactivex.rxjava2:rxjava:2.0.6'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
 }

@@ -5,7 +5,7 @@ package com.bajicdusko.data.exception;
  */
 
 public class DateParsingException extends RuntimeException {
-    public DateParsingException(String dateValue, Exception e) {
-        super(dateValue, e);
+    public DateParsingException(long dateValue, Exception e) {
+        super(String.valueOf(dateValue), e);
     }
 }

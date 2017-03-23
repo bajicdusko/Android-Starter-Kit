@@ -33,4 +33,8 @@ public class DateTimeUtil {
     public static String toTitleString(DateTime dateTime) {
         return dateTime.toString(TITLE_PATTERN);
     }
+
+    public static DateTime toDateTimeFromMillis(long millis) {
+        return new DateTime(millis);
+    }
 }

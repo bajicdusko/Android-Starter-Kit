@@ -1,6 +1,5 @@
 package com.bajicdusko.data.di;
 
-import com.bajicdusko.data.Constants;
 import com.bajicdusko.data.exception.DateParsingException;
 import com.bajicdusko.data.util.DateTimeUtil;
 import com.google.gson.TypeAdapter;
@@ -62,10 +61,10 @@ public class TypeAdapterUtil {
 
             @Override
             public DateTime read(JsonReader in) throws IOException {
-                String dateValue = Constants.EMPTY_STRING;
-                if (in.peek() == JsonToken.STRING) {
+                long dateValue = DateTime.now().getMillis();
+                if (in.peek() == JsonToken.NUMBER) {
                     try {
-                        return DateTimeUtil.toDateTime(dateValue = in.nextString());
+                        return DateTimeUtil.toDateTimeFromMillis(dateValue = (in.nextLong() * 1000));
                     } catch (Exception e) {
                         throw new DateParsingException(dateValue, e);
                     }

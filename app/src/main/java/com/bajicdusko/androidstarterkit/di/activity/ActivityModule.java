@@ -1,8 +1,10 @@
 package com.bajicdusko.androidstarterkit.di.activity;
 
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
 
 import com.bajicdusko.androidstarterkit.ui.BaseActivity;
+import com.bajicdusko.androidstarterkit.ui.fragment.StarterKitFragmentManager;
 import com.bajicdusko.data.Constants;
 import com.bajicdusko.presenter.PresenterModule;
 
@@ -29,5 +31,15 @@ public class ActivityModule {
     @Named(Constants.ACTIVITY_CONTEXT)
     public Context provideActivityContext() {
         return baseActivity;
+    }
+
+    @Provides
+    public FragmentManager provideFragmentManager() {
+        return baseActivity.getSupportFragmentManager();
+    }
+
+    @Provides
+    public StarterKitFragmentManager provideStarterKitFragmentManager(FragmentManager fragmentManager) {
+        return new StarterKitFragmentManager(fragmentManager);
     }
 }

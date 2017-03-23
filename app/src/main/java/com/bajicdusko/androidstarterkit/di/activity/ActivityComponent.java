@@ -1,5 +1,10 @@
 package com.bajicdusko.androidstarterkit.di.activity;
 
+import com.bajicdusko.androidstarterkit.di.adapter.AdapterComponent;
+import com.bajicdusko.androidstarterkit.ui.HomeActivity;
+import com.bajicdusko.androidstarterkit.ui.adapter.QuestionsAdapter;
+import com.bajicdusko.androidstarterkit.ui.fragment.QuestionFragment;
+
 import dagger.Subcomponent;
 
 /**
@@ -8,6 +13,14 @@ import dagger.Subcomponent;
 
 @Subcomponent(modules = {ActivityModule.class})
 public interface ActivityComponent {
+
+    AdapterComponent.Builder adapterBuilder();
+
+    void inject(HomeActivity homeActivity);
+
+    void inject(QuestionFragment questionFragment);
+
+    void inject(QuestionsAdapter questionsAdapter);
 
     @Subcomponent.Builder
     interface Builder {

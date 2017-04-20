@@ -5,7 +5,7 @@ Project is organized with **Clean Architecture** and **MVP Pattern** in mind, se
 * app
 * presentation
 * data
-* --domain--(not yet)
+* ~~domain~~(not yet)
 
 Libraries included in this project are listed below:
 - RxJava2

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_margin">16dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="default_elevation">5dp</dimen>
 </resources>

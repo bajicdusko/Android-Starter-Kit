@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_home_fl_container"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-</FrameLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_home_tl_main"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:elevation="@dimen/default_elevation"
+        app:theme="@style/AppTheme.Toolbar"/>
+
+    <FrameLayout
+        android:id="@+id/activity_home_fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/activity_home_tl_main"
+        android:orientation="vertical">
+
+    </FrameLayout>
+
+</RelativeLayout>

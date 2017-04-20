@@ -10,11 +10,11 @@ import com.bajicdusko.androidstarterkit.di.adapter.AdapterModule;
  * Created by Bajic Dusko (www.bajicdusko.com) on 02/03/17.
  */
 
-public abstract class StarterKitRecyclerViewAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
+public abstract class BaseRecyclerViewAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
 
     private ActivityComponent activityComponent;
 
-    public StarterKitRecyclerViewAdapter(ActivityComponent activityComponent) {
+    public BaseRecyclerViewAdapter(ActivityComponent activityComponent) {
         this.activityComponent = activityComponent;
     }
 

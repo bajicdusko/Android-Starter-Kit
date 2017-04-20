@@ -1,6 +1,6 @@
 package com.bajicdusko.androidstarterkit.di.app;
 
-import com.bajicdusko.androidstarterkit.AndroidStarterKitApplication;
+import com.bajicdusko.androidstarterkit.MyApplication;
 import com.bajicdusko.androidstarterkit.di.activity.ActivityComponent;
 
 import javax.inject.Singleton;
@@ -13,11 +13,11 @@ import dagger.Module;
 
 @Singleton
 @Module(subcomponents = {ActivityComponent.class})
-public class AndroidStarterKitModule {
+public class ApplicationModule {
 
-    private final AndroidStarterKitApplication application;
+    private final MyApplication application;
 
-    public AndroidStarterKitModule(AndroidStarterKitApplication application) {
+    public ApplicationModule(MyApplication application) {
         this.application = application;
     }
 }

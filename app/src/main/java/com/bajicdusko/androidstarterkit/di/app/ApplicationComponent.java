@@ -11,7 +11,7 @@ import dagger.Component;
  */
 
 @Singleton
-@Component(modules = {AndroidStarterKitModule.class, AndroidModule.class})
-public interface AndroidStarterKitComponent {
+@Component(modules = {ApplicationModule.class, AndroidModule.class})
+public interface ApplicationComponent {
     ActivityComponent.Builder activityComponentBuilder();
 }

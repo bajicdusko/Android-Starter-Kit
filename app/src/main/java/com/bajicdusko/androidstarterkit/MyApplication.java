@@ -5,26 +5,26 @@ import android.app.Application;
 import com.bajicdusko.androidstarterkit.di.activity.ActivityComponent;
 import com.bajicdusko.androidstarterkit.di.activity.ActivityModule;
 import com.bajicdusko.androidstarterkit.di.app.AndroidModule;
-import com.bajicdusko.androidstarterkit.di.app.AndroidStarterKitComponent;
-import com.bajicdusko.androidstarterkit.di.app.AndroidStarterKitModule;
-import com.bajicdusko.androidstarterkit.di.app.DaggerAndroidStarterKitComponent;
+import com.bajicdusko.androidstarterkit.di.app.ApplicationComponent;
+import com.bajicdusko.androidstarterkit.di.app.ApplicationModule;
+import com.bajicdusko.androidstarterkit.di.app.DaggerApplicationComponent;
 import com.bajicdusko.androidstarterkit.ui.BaseActivity;
 
 /**
  * Created by Bajic Dusko (www.bajicdusko.com) on 23/03/17.
  */
 
-public class AndroidStarterKitApplication extends Application {
+public class MyApplication extends Application {
 
 
-    private AndroidStarterKitComponent component;
+    private ApplicationComponent component;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        component = DaggerAndroidStarterKitComponent.builder()
-                .androidStarterKitModule(new AndroidStarterKitModule(this))
+        component = DaggerApplicationComponent.builder()
+                .applicationModule(new ApplicationModule(this))
                 .androidModule(new AndroidModule(this))
                 .build();
     }

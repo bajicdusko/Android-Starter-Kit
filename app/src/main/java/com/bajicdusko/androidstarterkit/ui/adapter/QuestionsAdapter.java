@@ -16,7 +16,7 @@ import javax.inject.Named;
  * Created by Bajic Dusko (www.bajicdusko.com) on 23/03/2017.
  */
 
-public class QuestionsAdapter extends StarterKitRecyclerViewAdapter<QuestionViewHolder> implements QuestionAdapterPresenter.View {
+public class QuestionsAdapter extends BaseRecyclerViewAdapter<QuestionViewHolder> implements QuestionAdapterPresenter.View {
 
     @Inject
     @Named(Constants.ACTIVITY_CONTEXT)

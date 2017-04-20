@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.bajicdusko.androidstarterkit.AndroidStarterKitApplication;
+import com.bajicdusko.androidstarterkit.MyApplication;
 import com.bajicdusko.androidstarterkit.di.activity.ActivityComponent;
 
 import butterknife.ButterKnife;
@@ -25,6 +25,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public ActivityComponent injector() {
-        return ((AndroidStarterKitApplication) getApplicationContext()).getActivityComponent(this);
+        return ((MyApplication) getApplicationContext()).getActivityComponent(this);
     }
 }

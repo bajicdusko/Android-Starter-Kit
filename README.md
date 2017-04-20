@@ -1,18 +1,22 @@
 # Android Starter Kit
 
-I've created this project as starting point for new native applications that i am working on. Setting up android application everytime, from the beginning is waste of time for me.
-I think that every modern native application should be organized on a similar way, so i am sharing it here. You might find it useful. This project includes and set-up most modern (and must have libraries, in my opinion):
+More or less, each android project could have similar structure and libraries used. Some features as well. This project should help us start new android application without spending too much time on initial setup. ds
+Project follows Clean Architecture, separated to four modules: 
+* app
+* presentation
+* data
+* --domain--(not yet)
+
 - RxJava2
 - RxAndroid2
+- RxBinding2
 - Dagger2
 - Retrofit2
 - Gson
 - OkHttp3
-- Otto
-- JobQueue
 - ButterKnife
-- Fresco
 - PermissionDispatcher
 - JodaTime
-
-Added support for WP-REST-API.
+- Timber
+- Mockito
+- Robolectric

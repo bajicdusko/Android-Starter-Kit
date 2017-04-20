@@ -8,16 +8,25 @@ Project is organized with **Clean Architecture** and **MVP Pattern** in mind, se
 * ~~domain~~(not yet)
 
 Libraries included in this project are listed below:
+
+Common
 - RxJava2
 - RxAndroid2
-- RxBinding2
 - Dagger2
+- JodaTime
+- Timber
+
+Network
 - Retrofit2
 - Gson
 - OkHttp3
+
+View
+- RxBinding2
 - ButterKnife
 - PermissionDispatcher
-- JodaTime
-- Timber
+- ConstraintLayout
+
+Testing
 - Mockito
 - Robolectric

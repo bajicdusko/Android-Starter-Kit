@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.bajicdusko.androidstarterkit.R;
 import com.bajicdusko.androidstarterkit.di.adapter.AdapterComponent;
-import com.bajicdusko.androidstarterkit.presentation.QuestionViewHolderPresenter;
+import com.bajicdusko.presenter.QuestionViewHolderPresenter;
 
 import javax.inject.Inject;
 

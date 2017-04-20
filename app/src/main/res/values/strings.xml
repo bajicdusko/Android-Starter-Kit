@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Android Starter Kit</string>
+    <string name="any_username">Any username</string>
+    <string name="any_password">Any password</string>
+    <string name="login">Login</string>
+    <string name="field_cannot_be_empty">Field cannot be empty</string>
 </resources>

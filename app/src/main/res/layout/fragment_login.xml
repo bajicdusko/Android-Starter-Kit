@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_login_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackground">
+
+    <ImageView
+        android:id="@+id/fragment_login_iv_logo"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/logo_height"
+        android:layout_marginEnd="0dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="32dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo"
+        tools:visibility="visible"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/fragment_login_til_username"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_login_iv_logo"
+        app:layout_constraintVertical_bias="0.5"
+        tools:visibility="visible">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/fragment_login_tet_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/any_username"
+            android:imeOptions="actionNext"
+            android:inputType="text"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/fragment_login_til_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/fragment_login_til_username"
+        app:layout_constraintRight_toRightOf="@+id/fragment_login_til_username"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_login_til_username"
+        app:passwordToggleEnabled="true"
+        tools:visibility="visible">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/fragment_login_tet_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/any_password"
+            android:imeOptions="actionGo"
+            android:inputType="textPassword"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/fragment_login_bt_login"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/defaultButtonHeight"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/login"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_login_til_password"
+        app:theme="@style/DefaultButton"
+        tools:visibility="visible"/>
+
+</android.support.constraint.ConstraintLayout>

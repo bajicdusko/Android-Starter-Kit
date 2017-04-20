@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="defaultMargin">16dp</dimen>
+    <dimen name="toolbarHeight">56dp</dimen>
+    <dimen name="defaultElevation">5dp</dimen>
+    <dimen name="logo_height">150dp</dimen>
+    <dimen name="defaultButtonHeight">56dp</dimen>
+    <dimen name="defaultTextSize">18sp</dimen>
     <dimen name="default_margin">16dp</dimen>
-    <dimen name="toolbar_height">56dp</dimen>
-    <dimen name="default_elevation">5dp</dimen>
 </resources>

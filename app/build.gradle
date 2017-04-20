@@ -110,5 +110,5 @@ dependencies {
     compile 'com.github.hotchemi:permissionsdispatcher:2.3.2'
     annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:2.3.2'
 
-    compile 'com.github.barteksc:android-pdf-viewer:2.5.1'
+    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
 }

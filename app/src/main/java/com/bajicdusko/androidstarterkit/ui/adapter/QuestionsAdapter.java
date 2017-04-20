@@ -5,9 +5,9 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.bajicdusko.androidstarterkit.di.activity.ActivityComponent;
-import com.bajicdusko.androidstarterkit.presentation.QuestionAdapterPresenter;
 import com.bajicdusko.androidstarterkit.ui.adapter.viewholder.QuestionViewHolder;
 import com.bajicdusko.data.Constants;
+import com.bajicdusko.presenter.QuestionAdapterPresenter;
 
 import javax.inject.Inject;
 import javax.inject.Named;

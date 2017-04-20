@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:layout_alignParentTop="true"
-        android:elevation="@dimen/default_elevation"
+        android:elevation="@dimen/defaultElevation"
         app:theme="@style/AppTheme.Toolbar"/>
 
     <FrameLayout

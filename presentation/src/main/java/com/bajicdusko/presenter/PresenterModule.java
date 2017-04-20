@@ -1,13 +1,13 @@
 package com.bajicdusko.presenter;
 
-import com.bajicdusko.androidstarterkit.presentation.QuestionAdapterPresenter;
-import com.bajicdusko.androidstarterkit.presentation.QuestionPresenter;
-import com.bajicdusko.androidstarterkit.presentation.QuestionViewHolderPresenter;
-import com.bajicdusko.androidstarterkit.presentation.impl.QuestionAdapterPresenterImpl;
-import com.bajicdusko.androidstarterkit.presentation.impl.QuestionPresenterImpl;
-import com.bajicdusko.androidstarterkit.presentation.impl.QuestionViewHolderPresenterImpl;
 import com.bajicdusko.data.di.DataModule;
+import com.bajicdusko.data.repository.CacheRepository;
 import com.bajicdusko.data.repository.QuestionRepository;
+import com.bajicdusko.presenter.impl.HomePresenterImpl;
+import com.bajicdusko.presenter.impl.LoginPresenterImpl;
+import com.bajicdusko.presenter.impl.QuestionAdapterPresenterImpl;
+import com.bajicdusko.presenter.impl.QuestionPresenterImpl;
+import com.bajicdusko.presenter.impl.QuestionViewHolderPresenterImpl;
 
 import dagger.Module;
 import dagger.Provides;
@@ -32,5 +32,15 @@ public class PresenterModule {
     @Provides
     public QuestionViewHolderPresenter provideQuestionViewHolderPresenter() {
         return new QuestionViewHolderPresenterImpl();
+    }
+
+    @Provides
+    public HomePresenter provideHomePresenter(CacheRepository cacheRepository) {
+        return new HomePresenterImpl(cacheRepository);
+    }
+
+    @Provides
+    public LoginPresenter provideLoginPresenter() {
+        return new LoginPresenterImpl();
     }
 }

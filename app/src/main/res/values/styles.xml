@@ -13,4 +13,14 @@
     <style name="AppTheme.Toolbar">
         <item name="android:background">@color/colorPrimary</item>
     </style>
+
+    <style name="ParentButton" parent="Widget.AppCompat.Button">
+        <item name="android:textSize">@dimen/defaultTextSize</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="DefaultButton" parent="ParentButton">
+        <item name="colorButtonNormal">@color/colorPrimary</item>
+    </style>
 </resources>

@@ -18,7 +18,7 @@
     <style name="AppTheme.Launch">
         <item name="android:windowNoTitle">false</item>
         <item name="android:windowBackground">@color/appBackground</item>
-        <item name="android:windowTitleSize">@dimen/toolbar_height</item>
+        <item name="android:windowTitleSize">@dimen/toolbarHeight</item>
         <item name="android:windowTitleStyle">@style/CustomWindowTitle</item>
         <item name="android:windowTitleBackgroundStyle">@style/CustomWindowTitleBackground</item>
     </style>

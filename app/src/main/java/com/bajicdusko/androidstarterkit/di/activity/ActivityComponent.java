@@ -3,6 +3,7 @@ package com.bajicdusko.androidstarterkit.di.activity;
 import com.bajicdusko.androidstarterkit.di.adapter.AdapterComponent;
 import com.bajicdusko.androidstarterkit.ui.HomeActivity;
 import com.bajicdusko.androidstarterkit.ui.adapter.QuestionsAdapter;
+import com.bajicdusko.androidstarterkit.ui.authentication.LoginFragment;
 import com.bajicdusko.androidstarterkit.ui.fragment.QuestionFragment;
 
 import dagger.Subcomponent;
@@ -21,6 +22,8 @@ public interface ActivityComponent {
     void inject(QuestionFragment questionFragment);
 
     void inject(QuestionsAdapter questionsAdapter);
+
+    void inject(LoginFragment loginFragment);
 
     @Subcomponent.Builder
     interface Builder {

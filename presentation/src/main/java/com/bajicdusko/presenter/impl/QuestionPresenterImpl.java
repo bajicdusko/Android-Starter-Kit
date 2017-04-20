@@ -1,10 +1,10 @@
-package com.bajicdusko.androidstarterkit.presentation.impl;
+package com.bajicdusko.presenter.impl;
 
-import com.bajicdusko.androidstarterkit.presentation.QuestionPresenter;
 import com.bajicdusko.data.Constants;
 import com.bajicdusko.data.repository.QuestionRepository;
 import com.bajicdusko.data.util.RXUtil;
 import com.bajicdusko.data.util.Util;
+import com.bajicdusko.presenter.QuestionPresenter;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;

@@ -1,6 +1,4 @@
-package com.bajicdusko.androidstarterkit.presentation;
-
-import com.bajicdusko.presenter.Presenter;
+package com.bajicdusko.presenter;
 
 /**
  * Created by Bajic Dusko (www.bajicdusko.com) on 23/03/2017.

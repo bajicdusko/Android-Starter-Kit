@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
 import com.bajicdusko.androidstarterkit.ui.BaseActivity;
-import com.bajicdusko.androidstarterkit.ui.fragment.StarterKitFragmentManager;
+import com.bajicdusko.androidstarterkit.ui.fragment.FragmentManagerHandler;
 import com.bajicdusko.data.Constants;
 import com.bajicdusko.presenter.PresenterModule;
 
@@ -39,7 +39,7 @@ public class ActivityModule {
     }
 
     @Provides
-    public StarterKitFragmentManager provideStarterKitFragmentManager(FragmentManager fragmentManager) {
-        return new StarterKitFragmentManager(fragmentManager);
+    public FragmentManagerHandler provideStarterKitFragmentManager(FragmentManager fragmentManager) {
+        return new FragmentManagerHandler(fragmentManager);
     }
 }

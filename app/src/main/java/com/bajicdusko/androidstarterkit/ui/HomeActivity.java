@@ -6,8 +6,12 @@ import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
 
 import com.bajicdusko.androidstarterkit.R;
+import com.bajicdusko.androidstarterkit.ui.authentication.LoginFragment;
+import com.bajicdusko.androidstarterkit.ui.fragment.FragmentChannel;
+import com.bajicdusko.androidstarterkit.ui.fragment.FragmentManagerHandler;
 import com.bajicdusko.androidstarterkit.ui.fragment.QuestionFragment;
-import com.bajicdusko.androidstarterkit.ui.fragment.StarterKitFragmentManager;
+import com.bajicdusko.androidstarterkit.ui.view.Utils;
+import com.bajicdusko.presenter.HomePresenter;
 
 import javax.inject.Inject;
 
@@ -17,13 +21,13 @@ import butterknife.BindView;
  * Created by Bajic Dusko (www.bajicdusko.com) on 23/03/2017.
  */
 
-public class HomeActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity implements HomePresenter.View, FragmentChannel {
 
-    @Inject
-    StarterKitFragmentManager starterKitFragmentManager;
+    @Inject FragmentManagerHandler fragmentManagerHandler;
+    @Inject HomePresenter homePresenter;
 
-    @BindView(R.id.activity_home_tl_main) Toolbar tlMain;
     @BindView(R.id.activity_home_fl_container) FrameLayout flContainer;
+    @BindView(R.id.activity_home_tl_main) Toolbar tlMain;
 
     @Override
     protected int getLayoutId() {
@@ -35,10 +39,46 @@ public class HomeActivity extends BaseActivity {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         injector().inject(this);
-
         setSupportActionBar(tlMain);
+        fragmentManagerHandler.setFragmentContainerId(flContainer);
 
-        starterKitFragmentManager.setFragmentContainerId(flContainer);
-        starterKitFragmentManager.replaceFragment(QuestionFragment.newInstance());
+        homePresenter.setView(this);
+        homePresenter.init();
+    }
+
+    @Override
+    public void showLogin() {
+        fadeOutToolbar();
+        fragmentManagerHandler.addFragment(LoginFragment.newInstance());
+    }
+
+    @Override
+    public void fadeOutToolbar() {
+        if (tlMain.getAlpha() > 0f) {
+            Utils.fadeOut(tlMain);
+        }
+    }
+
+    private void fadeInToolbar() {
+        if (tlMain.getAlpha() < 1f) {
+            Utils.fadeIn(tlMain);
+        }
+    }
+
+    @Override
+    public void showHome() {
+        fragmentManagerHandler.popUpAll();
+        fragmentManagerHandler.replaceFragment(QuestionFragment.newInstance());
+        fadeInToolbar();
+    }
+
+    @Override
+    public void dispose() {
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        fragmentManagerHandler.onBackPressed();
     }
 }

@@ -1,7 +1,6 @@
-package com.bajicdusko.androidstarterkit.presentation;
+package com.bajicdusko.presenter;
 
 import com.bajicdusko.data.api.model.stackoverflow.SOQuestion;
-import com.bajicdusko.presenter.FragmentPresenter;
 
 import java.util.List;
 

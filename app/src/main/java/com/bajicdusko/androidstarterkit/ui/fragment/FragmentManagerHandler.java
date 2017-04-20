@@ -15,12 +15,12 @@ import java.util.List;
 /**
  * EurekaFragmentManager is helper class for adding, replacing and removing fragments from stack.
  */
-public class StarterKitFragmentManager {
+public class FragmentManagerHandler {
 
     private FragmentManager fragmentManager;
     private int fragmentContainerId;
 
-    public StarterKitFragmentManager(FragmentManager fragmentManager) {
+    public FragmentManagerHandler(FragmentManager fragmentManager) {
         this.fragmentManager = fragmentManager;
     }
 

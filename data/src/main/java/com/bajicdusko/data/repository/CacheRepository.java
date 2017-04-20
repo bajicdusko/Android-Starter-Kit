@@ -16,5 +16,7 @@ public interface CacheRepository {
 
     boolean isSidebarShown();
 
+    boolean isLoggedIn();
+
     void clear();
 }

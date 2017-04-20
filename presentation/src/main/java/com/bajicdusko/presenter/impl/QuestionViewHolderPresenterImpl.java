@@ -1,8 +1,8 @@
-package com.bajicdusko.androidstarterkit.presentation.impl;
+package com.bajicdusko.presenter.impl;
 
-import com.bajicdusko.androidstarterkit.presentation.QuestionAdapterPresenter;
-import com.bajicdusko.androidstarterkit.presentation.QuestionViewHolderPresenter;
 import com.bajicdusko.data.api.model.stackoverflow.SOQuestion;
+import com.bajicdusko.presenter.QuestionAdapterPresenter;
+import com.bajicdusko.presenter.QuestionViewHolderPresenter;
 
 /**
  * Created by Bajic Dusko (www.bajicdusko.com) on 23/03/2017.

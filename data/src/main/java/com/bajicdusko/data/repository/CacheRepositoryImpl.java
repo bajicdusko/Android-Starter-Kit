@@ -1,10 +1,10 @@
-package com.bajicdusko.data.repository.impl;
+package com.bajicdusko.data.repository;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
+import com.bajicdusko.androidstarterkit.repository.CacheRepository;
 import com.bajicdusko.data.Constants;
-import com.bajicdusko.data.repository.CacheRepository;
 
 /**
  * Created by Bajic Dusko (www.bajicdusko.com) on 27/02/17.

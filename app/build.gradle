@@ -22,8 +22,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
 
     signingConfigs {
@@ -77,22 +77,14 @@ configurations {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.1.1'
     testCompile 'junit:junit:4.12'
 
-    devDebugCompile project(path: ':presentation', configuration: 'devDebug')
-    devReleaseCompile project(path: ':presentation', configuration: 'devRelease')
-    qaDebugCompile project(path: ':presentation', configuration: 'qaDebug')
-    qaReleaseCompile project(path: ':presentation', configuration: 'qaRelease')
-    productionDebugCompile project(path: ':presentation', configuration: 'productionDebug')
-    productionReleaseCompile project(path: ':presentation', configuration: 'productionRelease')
-
+    compile 'com.android.support:appcompat-v7:25.1.1'
     compile 'com.android.support:multidex:1.0.1'
-
     compile 'com.android.support:appcompat-v7:25.1.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:25.1.1'
@@ -105,10 +97,19 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
 
     compile 'com.makeramen:roundedimageview:2.3.0'
-
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
     compile 'com.github.hotchemi:permissionsdispatcher:2.3.2'
     annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:2.3.2'
-
     compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+
+    devDebugCompile project(path: ':presentation', configuration: 'devDebug')
+    devReleaseCompile project(path: ':presentation', configuration: 'devRelease')
+    qaDebugCompile project(path: ':presentation', configuration: 'qaDebug')
+    qaReleaseCompile project(path: ':presentation', configuration: 'qaRelease')
+    productionDebugCompile project(path: ':presentation', configuration: 'productionDebug')
+    productionReleaseCompile project(path: ':presentation', configuration: 'productionRelease')
 }

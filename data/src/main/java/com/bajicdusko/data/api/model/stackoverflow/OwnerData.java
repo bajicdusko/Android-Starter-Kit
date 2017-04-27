@@ -1,12 +1,13 @@
 package com.bajicdusko.data.api.model.stackoverflow;
 
+import com.bajicdusko.data.api.model.BaseDataModel;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Bajic Dusko (www.bajicdusko.com) on 23/03/2017.
  */
 
-public class Owner {
+public class OwnerData extends BaseDataModel {
 
     @SerializedName("reputation")
     private int reputation;

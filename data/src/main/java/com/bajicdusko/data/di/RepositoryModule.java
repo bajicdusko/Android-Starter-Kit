@@ -2,11 +2,11 @@ package com.bajicdusko.data.di;
 
 import android.content.SharedPreferences;
 
+import com.bajicdusko.androidstarterkit.repository.CacheRepository;
+import com.bajicdusko.androidstarterkit.repository.QuestionRepository;
 import com.bajicdusko.data.api.questions.QuestionsApi;
-import com.bajicdusko.data.repository.CacheRepository;
-import com.bajicdusko.data.repository.QuestionRepository;
-import com.bajicdusko.data.repository.impl.CacheRepositoryImpl;
-import com.bajicdusko.data.repository.impl.QuestionRepositoryImpl;
+import com.bajicdusko.data.repository.CacheRepositoryImpl;
+import com.bajicdusko.data.repository.QuestionRepositoryImpl;
 
 import dagger.Module;
 import dagger.Provides;

@@ -1,6 +1,6 @@
 package com.bajicdusko.data.api.model;
 
-import com.bajicdusko.data.api.model.stackoverflow.SOQuestion;
+import com.bajicdusko.data.api.model.stackoverflow.SOQuestionData;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -12,13 +12,13 @@ import java.util.List;
 public class SOQuestionWrapper {
 
     @SerializedName("items")
-    private List<SOQuestion> questions;
+    private List<SOQuestionData> questions;
 
-    public List<SOQuestion> getQuestions() {
+    public List<SOQuestionData> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(List<SOQuestion> questions) {
+    public void setQuestions(List<SOQuestionData> questions) {
         this.questions = questions;
     }
 }

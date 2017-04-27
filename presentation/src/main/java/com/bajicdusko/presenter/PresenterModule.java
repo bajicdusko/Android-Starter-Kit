@@ -1,8 +1,8 @@
 package com.bajicdusko.presenter;
 
+import com.bajicdusko.androidstarterkit.interactor.GetQuestionsList;
+import com.bajicdusko.androidstarterkit.repository.CacheRepository;
 import com.bajicdusko.data.di.DataModule;
-import com.bajicdusko.data.repository.CacheRepository;
-import com.bajicdusko.data.repository.QuestionRepository;
 import com.bajicdusko.presenter.impl.HomePresenterImpl;
 import com.bajicdusko.presenter.impl.LoginPresenterImpl;
 import com.bajicdusko.presenter.impl.QuestionAdapterPresenterImpl;
@@ -20,8 +20,8 @@ import dagger.Provides;
 public class PresenterModule {
 
     @Provides
-    public QuestionPresenter provideQuestionPresenter(QuestionRepository questionRepository) {
-        return new QuestionPresenterImpl(questionRepository);
+    public QuestionPresenter provideQuestionPresenter(GetQuestionsList getQuestionsList) {
+        return new QuestionPresenterImpl(getQuestionsList);
     }
 
     @Provides

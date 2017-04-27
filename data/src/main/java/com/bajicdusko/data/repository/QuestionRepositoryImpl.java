@@ -1,12 +1,14 @@
-package com.bajicdusko.data.repository.impl;
+package com.bajicdusko.data.repository;
 
+import com.bajicdusko.androidstarterkit.model.SOQuestion;
+import com.bajicdusko.androidstarterkit.repository.QuestionRepository;
 import com.bajicdusko.data.Constants;
-import com.bajicdusko.data.api.model.stackoverflow.SOQuestion;
 import com.bajicdusko.data.api.questions.QuestionsApi;
-import com.bajicdusko.data.repository.QuestionRepository;
+import com.bajicdusko.data.mapper.MapperFactory;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
 import io.reactivex.Single;
 
 /**
@@ -24,7 +26,9 @@ public class QuestionRepositoryImpl implements QuestionRepository {
     @Override
     public Single<List<SOQuestion>> getQuestionsByTag(String tag) {
         return questionsApi.get(Constants.DEFAULT_PAGE, Constants.DEFAULT_PER_PAGE, tag)
-                .singleOrError()
-                .map(soQuestionWrapper -> soQuestionWrapper.getQuestions());
+                .map(soQuestionWrapper -> soQuestionWrapper.getQuestions())
+                .flatMap(Flowable::fromIterable)
+                .map(soQuestionData -> ((SOQuestion) MapperFactory.create(soQuestionData).transform(soQuestionData)))
+                .toList();
     }
 }

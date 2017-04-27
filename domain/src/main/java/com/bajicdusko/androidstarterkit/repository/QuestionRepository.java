@@ -1,6 +1,6 @@
-package com.bajicdusko.data.repository;
+package com.bajicdusko.androidstarterkit.repository;
 
-import com.bajicdusko.data.api.model.stackoverflow.SOQuestion;
+import com.bajicdusko.androidstarterkit.model.SOQuestion;
 
 import java.util.List;
 

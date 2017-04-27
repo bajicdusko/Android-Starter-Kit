@@ -1,6 +1,6 @@
 package com.bajicdusko.presenter.impl;
 
-import com.bajicdusko.data.api.model.stackoverflow.SOQuestion;
+import com.bajicdusko.androidstarterkit.model.SOQuestion;
 import com.bajicdusko.presenter.QuestionAdapterPresenter;
 
 import java.util.List;

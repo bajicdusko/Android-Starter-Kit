@@ -1,0 +1,17 @@
+apply plugin: 'java'
+
+configurations {
+    provided
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'io.reactivex.rxjava2:rxjava:2.0.6'
+    compile 'joda-time:joda-time:2.9.7'
+
+    compile 'com.google.dagger:dagger:2.9'
+    provided 'javax.annotation:jsr250-api:1.0'
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"

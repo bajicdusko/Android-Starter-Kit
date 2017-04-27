@@ -3,10 +3,10 @@ package com.bajicdusko.data.api;
 import android.text.TextUtils;
 import android.util.Base64;
 
+import com.bajicdusko.androidstarterkit.repository.CacheRepository;
 import com.bajicdusko.data.BuildConfig;
 import com.bajicdusko.data.RxJava2ErrorHandlerCallAdapterFactory;
 import com.bajicdusko.data.api.questions.QuestionsApi;
-import com.bajicdusko.data.repository.CacheRepository;
 import com.google.gson.Gson;
 
 import okhttp3.OkHttpClient;

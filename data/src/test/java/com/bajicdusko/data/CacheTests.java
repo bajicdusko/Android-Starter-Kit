@@ -3,8 +3,8 @@ package com.bajicdusko.data;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.bajicdusko.data.repository.CacheRepository;
-import com.bajicdusko.data.repository.impl.CacheRepositoryImpl;
+import com.bajicdusko.androidstarterkit.repository.CacheRepository;
+import com.bajicdusko.data.repository.CacheRepositoryImpl;
 
 import junit.framework.Assert;
 

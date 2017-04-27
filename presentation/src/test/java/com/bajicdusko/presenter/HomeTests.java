@@ -1,6 +1,6 @@
 package com.bajicdusko.presenter;
 
-import com.bajicdusko.data.repository.CacheRepository;
+import com.bajicdusko.androidstarterkit.repository.CacheRepository;
 import com.bajicdusko.presenter.impl.HomePresenterImpl;
 
 import org.junit.Test;

@@ -1,9 +1,9 @@
 package com.bajicdusko.data.di;
 
+import com.bajicdusko.androidstarterkit.repository.CacheRepository;
 import com.bajicdusko.data.api.AnnotationExclusionStrategy;
 import com.bajicdusko.data.api.ApiFactory;
 import com.bajicdusko.data.api.questions.QuestionsApi;
-import com.bajicdusko.data.repository.CacheRepository;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

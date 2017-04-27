@@ -1,4 +1,4 @@
-package com.bajicdusko.data.repository;
+package com.bajicdusko.androidstarterkit.repository;
 
 /**
  * Created by Bajic Dusko (www.bajicdusko.com) on 27/02/17.

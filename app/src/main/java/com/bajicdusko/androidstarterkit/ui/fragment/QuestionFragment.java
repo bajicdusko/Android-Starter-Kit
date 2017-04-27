@@ -8,10 +8,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.bajicdusko.androidstarterkit.R;
+import com.bajicdusko.androidstarterkit.model.SOQuestion;
 import com.bajicdusko.androidstarterkit.ui.BaseFragment;
 import com.bajicdusko.androidstarterkit.ui.adapter.QuestionsAdapter;
 import com.bajicdusko.androidstarterkit.ui.view.SimpleDividerItemDecoration;
-import com.bajicdusko.data.api.model.stackoverflow.SOQuestion;
 import com.bajicdusko.presenter.QuestionPresenter;
 
 import java.util.List;

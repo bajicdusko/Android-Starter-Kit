@@ -1,6 +1,6 @@
 package com.bajicdusko.presenter.impl;
 
-import com.bajicdusko.data.repository.CacheRepository;
+import com.bajicdusko.androidstarterkit.repository.CacheRepository;
 import com.bajicdusko.presenter.HomePresenter;
 
 /**

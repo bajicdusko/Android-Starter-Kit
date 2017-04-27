@@ -1,7 +1,7 @@
 package com.bajicdusko.presenter.impl;
 
+import com.bajicdusko.androidstarterkit.interactor.GetQuestionsList;
 import com.bajicdusko.data.Constants;
-import com.bajicdusko.data.repository.QuestionRepository;
 import com.bajicdusko.data.util.RXUtil;
 import com.bajicdusko.data.util.Util;
 import com.bajicdusko.presenter.QuestionPresenter;
@@ -18,12 +18,12 @@ import timber.log.Timber;
 
 public class QuestionPresenterImpl implements QuestionPresenter {
 
-    private final QuestionRepository questionRepository;
+    private final GetQuestionsList getQuestionsList;
     private View view;
     private CompositeDisposable disposables;
 
-    public QuestionPresenterImpl(QuestionRepository questionRepository) {
-        this.questionRepository = questionRepository;
+    public QuestionPresenterImpl(GetQuestionsList getQuestionsList) {
+        this.getQuestionsList = getQuestionsList;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class QuestionPresenterImpl implements QuestionPresenter {
     public void load() {
         initDisposables();
         view.showProgress();
-        Disposable disposable = questionRepository.getQuestionsByTag(Constants.ANDROID_TAG)
+        Disposable disposable = getQuestionsList.buildResult(new GetQuestionsList.Params(Constants.ANDROID_TAG))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSuccess(a -> view.hideProgress())

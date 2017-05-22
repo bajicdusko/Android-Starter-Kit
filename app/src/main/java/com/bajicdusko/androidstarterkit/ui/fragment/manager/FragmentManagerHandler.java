@@ -1,12 +1,13 @@
-package com.bajicdusko.androidstarterkit.ui.fragment;
+package com.bajicdusko.androidstarterkit.ui.fragment.manager;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.widget.FrameLayout;
 
 import com.bajicdusko.presenter.FragmentPresenter;
 
-import java.util.List;
+import org.parceler.Parcels;
 
 /**
  * Created by Bajic Dusko (www.bajicdusko.com) on 27/02/17.
@@ -17,11 +18,14 @@ import java.util.List;
  */
 public class FragmentManagerHandler {
 
+    private static final String KEY_TAGS = "key_tags";
     private FragmentManager fragmentManager;
     private int fragmentContainerId;
+    private FragmentTagStack fragmentTagStack;
 
     public FragmentManagerHandler(FragmentManager fragmentManager) {
         this.fragmentManager = fragmentManager;
+        fragmentTagStack = new FragmentTagStack();
     }
 
     public void setFragmentContainerId(int fragmentContainerId) {
@@ -33,6 +37,7 @@ public class FragmentManagerHandler {
     }
 
     public void addFragment(IFragment fragment) {
+        fragmentTagStack.push(fragment.getFragmentName());
         fragmentManager.beginTransaction()
                 .add(fragmentContainerId, (Fragment) fragment)
                 .addToBackStack(null)
@@ -40,6 +45,7 @@ public class FragmentManagerHandler {
     }
 
     public void replaceFragment(IFragment fragment) {
+        fragmentTagStack.push(fragment.getFragmentName());
         fragmentManager.beginTransaction()
                 .replace(fragmentContainerId, (Fragment) fragment)
                 .addToBackStack(fragment.getFragmentName())
@@ -52,17 +58,22 @@ public class FragmentManagerHandler {
      */
     public void onBackPressed() {
         if (fragmentManager.getBackStackEntryCount() > 1) {
-            fragmentManager.popBackStackImmediate();
-            getCurrentFragmentView().setTitle();
+            popUp();
+            FragmentPresenter.View currentFragmentView = getCurrentFragmentView();
+            if (currentFragmentView != null) {
+                currentFragmentView.setTitle();
+            }
         }
     }
 
     public void popUp() {
         fragmentManager.popBackStackImmediate();
+        fragmentTagStack.pop();
     }
 
     public void popUpAll() {
         fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        fragmentTagStack.popUpAll();
     }
 
     /**
@@ -72,15 +83,34 @@ public class FragmentManagerHandler {
      * @return
      */
     public FragmentPresenter.View getCurrentFragmentView() {
-        return (FragmentPresenter.View) getCurrentFragment();
+        Fragment currentFragment = getCurrentFragment();
+        if (currentFragment != null) {
+            return (FragmentPresenter.View) currentFragment;
+        } else {
+            return null;
+        }
     }
 
     public Fragment getCurrentFragment() {
-        List<Fragment> fragments = fragmentManager.getFragments();
-        return fragments.get(fragmentManager.getBackStackEntryCount() - 1);
+        return fragmentManager.findFragmentByTag(fragmentTagStack.getActiveTag());
     }
 
     public void disposeEverything() {
-        getCurrentFragmentView().dispose();
+        FragmentPresenter.View currentFragmentView = getCurrentFragmentView();
+        if (currentFragmentView != null) {
+            currentFragmentView.dispose();
+        }
+    }
+
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelable(KEY_TAGS, Parcels.wrap(fragmentTagStack));
+    }
+
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            fragmentTagStack = Parcels.unwrap(savedInstanceState.getParcelable(KEY_TAGS));
+        } else {
+            fragmentTagStack = new FragmentTagStack();
+        }
     }
 }

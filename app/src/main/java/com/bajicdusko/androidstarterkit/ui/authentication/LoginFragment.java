@@ -12,7 +12,7 @@ import android.widget.ImageView;
 
 import com.bajicdusko.androidstarterkit.R;
 import com.bajicdusko.androidstarterkit.ui.BaseFragment;
-import com.bajicdusko.androidstarterkit.ui.fragment.IFragment;
+import com.bajicdusko.androidstarterkit.ui.fragment.manager.IFragment;
 import com.bajicdusko.presenter.LoginPresenter;
 import com.jakewharton.rxbinding2.view.RxView;
 

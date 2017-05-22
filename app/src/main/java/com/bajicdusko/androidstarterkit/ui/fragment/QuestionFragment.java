@@ -11,6 +11,7 @@ import com.bajicdusko.androidstarterkit.R;
 import com.bajicdusko.androidstarterkit.model.SOQuestion;
 import com.bajicdusko.androidstarterkit.ui.BaseFragment;
 import com.bajicdusko.androidstarterkit.ui.adapter.QuestionsAdapter;
+import com.bajicdusko.androidstarterkit.ui.fragment.manager.IFragment;
 import com.bajicdusko.androidstarterkit.ui.view.SimpleDividerItemDecoration;
 import com.bajicdusko.presenter.QuestionPresenter;
 

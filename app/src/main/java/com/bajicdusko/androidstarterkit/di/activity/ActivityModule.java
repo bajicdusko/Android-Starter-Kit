@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
 import com.bajicdusko.androidstarterkit.ui.BaseActivity;
-import com.bajicdusko.androidstarterkit.ui.fragment.FragmentManagerHandler;
+import com.bajicdusko.androidstarterkit.ui.fragment.manager.FragmentManagerHandler;
 import com.bajicdusko.data.Constants;
 import com.bajicdusko.presenter.PresenterModule;
 

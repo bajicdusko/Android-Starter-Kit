@@ -8,8 +8,8 @@ import android.widget.FrameLayout;
 import com.bajicdusko.androidstarterkit.R;
 import com.bajicdusko.androidstarterkit.ui.authentication.LoginFragment;
 import com.bajicdusko.androidstarterkit.ui.fragment.FragmentChannel;
-import com.bajicdusko.androidstarterkit.ui.fragment.FragmentManagerHandler;
 import com.bajicdusko.androidstarterkit.ui.fragment.QuestionFragment;
+import com.bajicdusko.androidstarterkit.ui.fragment.manager.FragmentManagerHandler;
 import com.bajicdusko.androidstarterkit.ui.view.Utils;
 import com.bajicdusko.presenter.HomePresenter;
 
@@ -46,6 +46,18 @@ public class HomeActivity extends BaseActivity implements HomePresenter.View, Fr
         if (savedInstanceState == null) {
             homePresenter.init();
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        fragmentManagerHandler.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        fragmentManagerHandler.onRestoreInstanceState(savedInstanceState);
     }
 
     @Override

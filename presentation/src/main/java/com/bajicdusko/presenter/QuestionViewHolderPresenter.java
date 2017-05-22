@@ -1,20 +1,58 @@
 package com.bajicdusko.presenter;
 
+import android.os.Bundle;
+
+import com.bajicdusko.androidstarterkit.model.SOQuestion;
+
 /**
  * Created by Bajic Dusko (www.bajicdusko.com) on 23/03/2017.
  */
 
-public interface QuestionViewHolderPresenter extends Presenter {
+public class QuestionViewHolderPresenter implements Presenter {
+    private int position;
+    private QuestionAdapterPresenter questionAdapterPresenter;
+    private View view;
 
-    void setPosition(int position);
+    public void setAdapterPresenter(QuestionAdapterPresenter questionAdapterPresenter) {
+        this.questionAdapterPresenter = questionAdapterPresenter;
+    }
 
-    void bind();
+    public void setView(View view) {
+        this.view = view;
+    }
 
-    void setAdapterPresenter(QuestionAdapterPresenter questionAdapterPresenter);
+    @Override
+    public void dispose() {
 
-    void setView(View view);
+    }
 
-    interface View extends Presenter.View {
+    @Override
+    public void restore() {
+
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public void bind() {
+        SOQuestion question = questionAdapterPresenter.getQuestion(position);
+        view.setTitle(question.getTitle());
+        view.setQuestionUrl(question.getQuestionUrl());
+        //TODO Wire other properties
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle outState) {
+
+    }
+
+    public interface View {
 
         void setTitle(String title);
 

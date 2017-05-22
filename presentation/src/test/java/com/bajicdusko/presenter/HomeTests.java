@@ -1,7 +1,6 @@
 package com.bajicdusko.presenter;
 
 import com.bajicdusko.androidstarterkit.repository.CacheRepository;
-import com.bajicdusko.presenter.impl.HomePresenterImpl;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +22,7 @@ public class HomeTests {
 
         HomePresenter.View homeView = Mockito.mock(HomePresenter.View.class);
 
-        HomePresenter homePresenter = new HomePresenterImpl(cacheRepository);
+        HomePresenter homePresenter = new HomePresenter(cacheRepository);
         homePresenter.setView(homeView);
         homePresenter.init();
 
@@ -38,7 +37,7 @@ public class HomeTests {
 
         HomePresenter.View homeView = Mockito.mock(HomePresenter.View.class);
 
-        HomePresenter homePresenter = new HomePresenterImpl(cacheRepository);
+        HomePresenter homePresenter = new HomePresenter(cacheRepository);
         homePresenter.setView(homeView);
         homePresenter.init();
 

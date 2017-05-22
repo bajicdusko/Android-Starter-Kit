@@ -20,6 +20,18 @@ public class OwnerData extends BaseDataModel {
     @SerializedName("link")
     private String profileUrl;
 
+    private OwnerData(Builder builder) {
+        setReputation(builder.reputation);
+        setUserId(builder.userId);
+        setAvatar(builder.avatar);
+        setDisplayName(builder.displayName);
+        setProfileUrl(builder.profileUrl);
+    }
+
+    public static Builder newBuilder() {
+        return new Builder();
+    }
+
     public int getReputation() {
         return reputation;
     }
@@ -58,5 +70,45 @@ public class OwnerData extends BaseDataModel {
 
     public void setProfileUrl(String profileUrl) {
         this.profileUrl = profileUrl;
+    }
+
+    public static final class Builder {
+        private int reputation;
+        private long userId;
+        private String avatar;
+        private String displayName;
+        private String profileUrl;
+
+        private Builder() {
+        }
+
+        public Builder withReputation(int val) {
+            reputation = val;
+            return this;
+        }
+
+        public Builder withUserId(long val) {
+            userId = val;
+            return this;
+        }
+
+        public Builder withAvatar(String val) {
+            avatar = val;
+            return this;
+        }
+
+        public Builder withDisplayName(String val) {
+            displayName = val;
+            return this;
+        }
+
+        public Builder withProfileUrl(String val) {
+            profileUrl = val;
+            return this;
+        }
+
+        public OwnerData build() {
+            return new OwnerData(this);
+        }
     }
 }

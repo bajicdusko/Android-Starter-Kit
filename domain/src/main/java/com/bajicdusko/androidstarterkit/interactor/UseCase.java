@@ -8,5 +8,5 @@ import io.reactivex.Single;
 
 public interface UseCase<M, P> {
 
-    Single<M> buildResult(P p);
+    Single<M> execute(P p);
 }

@@ -40,6 +40,11 @@ public class QuestionsAdapter extends BaseRecyclerViewAdapter<QuestionViewHolder
     }
 
     @Override
+    public void restore() {
+
+    }
+
+    @Override
     public void notifyAdapter() {
         notifyDataSetChanged();
     }

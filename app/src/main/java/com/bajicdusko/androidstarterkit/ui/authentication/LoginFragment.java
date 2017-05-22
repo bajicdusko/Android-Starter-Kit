@@ -87,6 +87,11 @@ public class LoginFragment extends BaseFragment implements IFragment, LoginPrese
     }
 
     @Override
+    public void restore() {
+
+    }
+
+    @Override
     public void setTitle() {
 
     }

@@ -68,4 +68,6 @@ dependencies {
     productionReleaseCompile project(path: ':data', configuration: 'productionRelease')
 
     annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
+
+    compile 'org.parceler:parceler-api:1.1.8'
 }

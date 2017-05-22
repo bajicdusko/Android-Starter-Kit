@@ -43,7 +43,9 @@ public class HomeActivity extends BaseActivity implements HomePresenter.View, Fr
         fragmentManagerHandler.setFragmentContainerId(flContainer);
 
         homePresenter.setView(this);
-        homePresenter.init();
+        if (savedInstanceState == null) {
+            homePresenter.init();
+        }
     }
 
     @Override
@@ -73,7 +75,17 @@ public class HomeActivity extends BaseActivity implements HomePresenter.View, Fr
     }
 
     @Override
+    public void setTitle() {
+
+    }
+
+    @Override
     public void dispose() {
+        homePresenter.dispose();
+    }
+
+    @Override
+    public void restore() {
 
     }
 

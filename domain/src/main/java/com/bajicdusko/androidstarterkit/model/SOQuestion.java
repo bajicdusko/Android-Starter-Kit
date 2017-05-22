@@ -23,6 +23,9 @@ public class SOQuestion extends BaseModel {
     private String questionUrl;
     private String title;
 
+    public SOQuestion() {
+    }
+
     private SOQuestion(Builder builder) {
         setTags(builder.tags);
         setOwner(builder.owner);

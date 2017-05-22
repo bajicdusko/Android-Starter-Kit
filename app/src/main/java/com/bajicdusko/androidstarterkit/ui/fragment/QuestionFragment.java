@@ -33,16 +33,25 @@ public class QuestionFragment extends BaseFragment implements IFragment, Questio
     @BindView(R.id.fragment_question_rv_main)
     RecyclerView rvMain;
     private QuestionsAdapter questionsAdapter;
+    private boolean isNewInstance = false;
 
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_question;
     }
 
+//    @Override
+//    public void onConfigurationChanged(Configuration newConfig) {
+//        super.onConfigurationChanged(newConfig);
+//        isNewInstance = true;
+//    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         injector().inject(this);
+        setRetainInstance(true);
+        isNewInstance = savedInstanceState == null;
     }
 
     @Override
@@ -51,12 +60,47 @@ public class QuestionFragment extends BaseFragment implements IFragment, Questio
         questionPresenter.setView(this);
         rvMain.setLayoutManager(new LinearLayoutManager(getContext()));
         rvMain.addItemDecoration(new SimpleDividerItemDecoration(getContext(), R.drawable.line_divider, R.dimen.default_margin));
+
+        if (questionsAdapter == null) {
+            questionsAdapter = new QuestionsAdapter(injector());
+        }
+
+        if (rvMain.getAdapter() == null) {
+            rvMain.setAdapter(questionsAdapter);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        questionPresenter.onSaveInstanceState(outState);
+        if (questionsAdapter != null) {
+            questionsAdapter.getQuestionAdapterPresenter().onSaveInstanceState(outState);
+        }
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if (savedInstanceState != null) {
+            if (questionPresenter != null) {
+                questionPresenter.onRestoreInstanceState(savedInstanceState);
+            }
+            if (questionsAdapter != null) {
+                questionsAdapter.getQuestionAdapterPresenter().onRestoreInstanceState(savedInstanceState);
+            }
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        questionPresenter.load();
+        if (isNewInstance) {
+            isNewInstance = !isNewInstance;
+            questionPresenter.load();
+        } else {
+            questionPresenter.restore();
+        }
     }
 
     @Override
@@ -73,15 +117,14 @@ public class QuestionFragment extends BaseFragment implements IFragment, Questio
 
     @Override
     public void onDataChange(List<SOQuestion> soQuestions) {
-        if (questionsAdapter == null) {
-            questionsAdapter = new QuestionsAdapter(injector());
-        }
-
-        if (rvMain.getAdapter() == null) {
-            rvMain.setAdapter(questionsAdapter);
-        }
-
         questionsAdapter.getQuestionAdapterPresenter().onDataChange(soQuestions);
+    }
+
+    @Override
+    public void restore() {
+        if (questionsAdapter != null) {
+            questionsAdapter.getQuestionAdapterPresenter().restore();
+        }
     }
 
     @Override

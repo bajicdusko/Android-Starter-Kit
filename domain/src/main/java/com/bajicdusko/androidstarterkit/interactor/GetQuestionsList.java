@@ -22,7 +22,7 @@ public class GetQuestionsList implements UseCase<List<SOQuestion>, GetQuestionsL
     }
 
     @Override
-    public Single<List<SOQuestion>> buildResult(Params params) {
+    public Single<List<SOQuestion>> execute(Params params) {
         return questionRepository.getQuestionsByTag(params.tag);
     }
 

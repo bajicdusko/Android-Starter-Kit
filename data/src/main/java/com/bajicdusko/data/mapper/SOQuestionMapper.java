@@ -1,6 +1,8 @@
 package com.bajicdusko.data.mapper;
 
+import com.bajicdusko.androidstarterkit.model.Owner;
 import com.bajicdusko.androidstarterkit.model.SOQuestion;
+import com.bajicdusko.data.api.model.stackoverflow.OwnerData;
 import com.bajicdusko.data.api.model.stackoverflow.SOQuestionData;
 
 /**
@@ -16,7 +18,7 @@ public class SOQuestionMapper implements DataMapper<SOQuestion, SOQuestionData> 
                 .withIsAnswered(soQuestionData.isAnswered())
                 .withLastActivityDate(soQuestionData.getLastActivityDate())
                 .withLastEditDate(soQuestionData.getLastEditDate())
-                //.withOwner(soQuestionData.getOwnerData()) todo init owner mapper
+                .withOwner(getOwner(soQuestionData.getOwnerData()))
                 .withQuestionId(soQuestionData.getQuestionId())
                 .withQuestionUrl(soQuestionData.getQuestionUrl())
                 .withAnswerCount(soQuestionData.getAnswerCount())
@@ -30,6 +32,14 @@ public class SOQuestionMapper implements DataMapper<SOQuestion, SOQuestionData> 
 
     }
 
+    private Owner getOwner(OwnerData ownerData) {
+        return (Owner) MapperFactory.create(ownerData).transform(ownerData);
+    }
+
+    private OwnerData getOwnerData(Owner owner) {
+        return (OwnerData) MapperFactory.create(owner).transform(owner);
+    }
+
     @Override
     public SOQuestionData transform(SOQuestion soQuestion) {
         return SOQuestionData.newBuilder()
@@ -38,7 +48,7 @@ public class SOQuestionMapper implements DataMapper<SOQuestion, SOQuestionData> 
                 .withIsAnswered(soQuestion.isAnswered())
                 .withLastActivityDate(soQuestion.getLastActivityDate())
                 .withLastEditDate(soQuestion.getLastEditDate())
-                //.withOwner(soQuestionData.getOwnerData()) todo init owner mapper
+                .withOwnerData(getOwnerData(soQuestion.getOwner()))
                 .withQuestionId(soQuestion.getQuestionId())
                 .withQuestionUrl(soQuestion.getQuestionUrl())
                 .withAnswerCount(soQuestion.getAnswerCount())

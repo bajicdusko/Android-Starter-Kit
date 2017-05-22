@@ -15,7 +15,7 @@ public class SOQuestionData extends BaseDataModel {
 
     @SerializedName("tags")
     private List<String> tags;
-    @SerializedName("ownerData")
+    @SerializedName("ownerD")
     private OwnerData ownerData;
     @SerializedName("is_answered")
     private boolean isAnswered;

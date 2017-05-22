@@ -48,9 +48,4 @@ public class QuestionViewHolder extends RecyclerView.ViewHolder implements Quest
     public void setQuestionUrl(String questionUrl) {
         tvQuestionUrl.setText(questionUrl);
     }
-
-    @Override
-    public void dispose() {
-
-    }
 }

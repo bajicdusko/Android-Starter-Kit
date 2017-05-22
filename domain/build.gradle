@@ -5,10 +5,9 @@ configurations {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'io.reactivex.rxjava2:rxjava:2.0.6'
     compile 'joda-time:joda-time:2.9.7'
-
     compile 'com.google.dagger:dagger:2.9'
     provided 'javax.annotation:jsr250-api:1.0'
 }

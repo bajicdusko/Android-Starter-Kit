@@ -31,5 +31,5 @@ View
 - [![Calligraphy](https://img.shields.io/badge/Calligraphy-2.2.0-green.svg)](https://github.com/chrisjenx/Calligraphy)
 
 Testing
-- [![Mockito](https://img.shields.io/badge/Robolectrict-2.7.22-green.svg)](https://github.com/mockito/mockito)
-- [![Robolectric](https://img.shields.io/badge/Robolectrict-3.3.2-green.svg)](https://github.com/robolectric/robolectric)
+- [![Mockito](https://img.shields.io/badge/Mockito-2.7.22-green.svg)](https://github.com/mockito/mockito)
+- [![Robolectric](https://img.shields.io/badge/Robolectric-3.3.2-green.svg)](https://github.com/robolectric/robolectric)

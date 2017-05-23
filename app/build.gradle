@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 25
@@ -107,6 +108,10 @@ dependencies {
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
 
     annotationProcessor 'org.parceler:parceler:1.1.8'
+
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+        transitive = true;
+    }
 
     devDebugCompile project(path: ':presentation', configuration: 'devDebug')
     devReleaseCompile project(path: ':presentation', configuration: 'devRelease')

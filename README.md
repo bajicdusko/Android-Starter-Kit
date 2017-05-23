@@ -33,3 +33,6 @@ View
 Testing
 - [![Mockito](https://img.shields.io/badge/Mockito-2.7.22-green.svg)](https://github.com/mockito/mockito)
 - [![Robolectric](https://img.shields.io/badge/Robolectric-3.3.2-green.svg)](https://github.com/robolectric/robolectric)
+
+Crash Reports
+- [![Crashlytics](https://img.shields.io/badge/Crashlytics-2.6.8-green.svg)](https://fabric.io/kits/android/crashlytics)

@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
@@ -22,14 +21,19 @@ android {
 
     publishNonDefault true
 
+    flavorDimensions "env"
+
     productFlavors {
         dev {
+            dimension "env"
             buildConfigField "String", "env", "\"https://api.\""
         }
         qa {
+            dimension "env"
             buildConfigField "String", "env", "\"https://api.\""
         }
         production {
+            dimension "env"
             buildConfigField "String", "env", "\"https://api.\""
         }
     }
@@ -50,29 +54,29 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestApi('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.1.1'
-    testCompile 'junit:junit:4.12'
-    testCompile "org.robolectric:robolectric:3.3.2"
+    api 'com.android.support:appcompat-v7:25.1.1'
+    testApi 'junit:junit:4.12'
+    testApi "org.robolectric:robolectric:3.3.2"
 
-    compile 'com.google.dagger:dagger:2.9'
-    provided 'javax.annotation:jsr250-api:1.0'
-    compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.squareup.retrofit2:retrofit:2.2.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
-    compile 'com.jakewharton.timber:timber:4.5.1'
-    compile 'joda-time:joda-time:2.9.7'
-    compile 'io.reactivex.rxjava2:rxjava:2.0.6'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    api 'com.google.dagger:dagger:2.9'
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+    api 'com.google.code.gson:gson:2.8.0'
+    api 'com.squareup.retrofit2:retrofit:2.2.0'
+    api 'com.squareup.retrofit2:converter-gson:2.2.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+    api 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+    api 'com.jakewharton.timber:timber:4.5.1'
+    api 'joda-time:joda-time:2.9.7'
+    api 'io.reactivex.rxjava2:rxjava:2.0.6'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
-    compile 'org.mockito:mockito-core:2.7.22'
-    compile 'org.mockito:mockito-android:2.7.22'
+    api 'org.mockito:mockito-core:2.7.22'
+    api 'org.mockito:mockito-android:2.7.22'
 
 
-    compile project(path: ':domain')
+    api project(':domain')
 }

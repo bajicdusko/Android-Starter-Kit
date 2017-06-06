@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
@@ -18,12 +17,21 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    flavorDimensions "env"
+
     productFlavors {
-        dev {}
+        dev {
+            dimension "env"
+        }
 
-        qa {}
+        qa {
+            dimension "env"
+        }
 
-        production {}
+        production {
+            dimension "env"
+        }
     }
 
     publishNonDefault true
@@ -43,31 +51,17 @@ android {
     }
 }
 
-configurations {
-    devDebugCompile
-    devReleaseCompile
-    qaDebugCompile
-    qaReleaseCompile
-    productionDebugCompile
-    productionReleaseCompile
-}
-
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestApi('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.1.1'
-    testCompile 'junit:junit:4.12'
+    api 'com.android.support:appcompat-v7:25.1.1'
+    testApi 'junit:junit:4.12'
 
-    devDebugCompile project(path: ':data', configuration: 'devDebug')
-    devReleaseCompile project(path: ':data', configuration: 'devRelease')
-    qaDebugCompile project(path: ':data', configuration: 'qaDebug')
-    qaReleaseCompile project(path: ':data', configuration: 'qaRelease')
-    productionDebugCompile project(path: ':data', configuration: 'productionDebug')
-    productionReleaseCompile project(path: ':data', configuration: 'productionRelease')
+    api project(':data')
 
     annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
 
-    compile 'org.parceler:parceler-api:1.1.8'
+    api 'org.parceler:parceler-api:1.1.8'
 }

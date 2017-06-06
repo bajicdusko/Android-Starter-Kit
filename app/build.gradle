@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'io.fabric'
 
 android {
@@ -23,8 +22,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     signingConfigs {
@@ -43,12 +42,20 @@ android {
         }
     }
 
+    flavorDimensions "env"
+
     productFlavors {
-        dev {}
+        dev {
+            dimension "env"
+        }
 
-        qa {}
+        qa {
+            dimension "env"
+        }
 
-        production {}
+        production {
+            dimension "env"
+        }
     }
 
     buildTypes {
@@ -68,55 +75,41 @@ android {
     }
 }
 
-configurations {
-    devDebugCompile
-    devReleaseCompile
-    qaDebugCompile
-    qaReleaseCompile
-    productionDebugCompile
-    productionReleaseCompile
-}
-
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 
-    compile 'com.android.support:appcompat-v7:25.1.1'
-    compile 'com.android.support:multidex:1.0.1'
-    compile 'com.android.support:appcompat-v7:25.1.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:support-v4:25.1.1'
-    compile 'com.android.support:design:25.1.1'
-    compile 'com.android.support:cardview-v7:25.1.1'
+    implementation 'com.android.support:appcompat-v7:25.1.1'
+    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'com.android.support:appcompat-v7:25.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:support-v4:25.1.1'
+    implementation 'com.android.support:design:25.1.1'
+    implementation 'com.android.support:cardview-v7:25.1.1'
 
-    compile 'com.jakewharton:butterknife:8.5.1'
+    implementation 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 
     annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
 
-    compile 'com.makeramen:roundedimageview:2.3.0'
-    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
-    compile 'com.github.hotchemi:permissionsdispatcher:2.3.2'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+    implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
+    implementation 'com.github.hotchemi:permissionsdispatcher:2.3.2'
     annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:2.3.2'
-    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
 
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
-    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
 
     annotationProcessor 'org.parceler:parceler:1.1.8'
 
-    compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+    implementation('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
         transitive = true;
     }
 
-    devDebugCompile project(path: ':presentation', configuration: 'devDebug')
-    devReleaseCompile project(path: ':presentation', configuration: 'devRelease')
-    qaDebugCompile project(path: ':presentation', configuration: 'qaDebug')
-    qaReleaseCompile project(path: ':presentation', configuration: 'qaRelease')
-    productionDebugCompile project(path: ':presentation', configuration: 'productionDebug')
-    productionReleaseCompile project(path: ':presentation', configuration: 'productionRelease')
+    implementation project(':presentation')
 }

@@ -1,4 +1,4 @@
-# This project is DEPRICATED and no longer maintained. Instead please check the Kotlin version of the same project. Looking for URL? Here it is [Kotlin Starter Kit - MVP](https://github.com/bajicdusko/KotlinAndroidStarterKit)
+# This project is DEPRECATED and no longer maintained. Instead please check the Kotlin version of the same project. Looking for URL? Here it is [Kotlin Starter Kit - MVP](https://github.com/bajicdusko/KotlinAndroidStarterKit)
 
 # Android Starter Kit
 

@@ -1,3 +1,5 @@
+# This project is DEPRICATED and no longer maintained. Instead please check the Kotlin version of the same project. Looking for URL? Here it is [Kotlin Starter Kit - MVP](https://github.com/bajicdusko/KotlinAndroidStarterKit)
+
 # Android Starter Kit
 
 More or less, each android project could have similar structure and libraries used. Some features as well. This project should help us start new android application without spending too much time on initial setup.
